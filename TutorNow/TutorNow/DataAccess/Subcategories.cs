@@ -7,6 +7,9 @@ namespace TutorNow.DataAccess
 {
     public class Subcategories /*: System.Data.Entity. DropCreateDatabaseIfModelChanges<>*/
     {
-
+        /*protected override void Seed(SubcategoriesContext context)
+        {
+            
+        }*/
     }
 }
