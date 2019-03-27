@@ -7,22 +7,34 @@ using System.Web;
 
 namespace TutorNow.Models
 {
-    public class Subjects
+    //public class Subjects
+    //{
+    //   [Key]
+    //   [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    //   public int Id { get; set; }
+    //   public int CategoryId { get; set; }
+    //   public string name { get; set; }
+    //}
+
+    //public class Subcategory
+    //{
+    //    [Key]
+    //    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    //    public int Id { get; set; }
+    //    public int SubcategoryId { get; set; }
+    //    public string name { get; set; }
+    //}
+
+    public enum Subjects
     {
-       [Key]
-       [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-       public int Id { get; set; }
-       public int CategoryId { get; set; }
-       public string name { get; set; }
+        English,
+        Math,
+        Science
     }
 
-    public class Subcategory
+    public class AccessClass
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        public int SubcategoryId { get; set; }
-        public string name { get; set; }
+        public Subjects Subjects { get; set; }
     }
 
 }

@@ -14,6 +14,6 @@ namespace TutorNow.Models
         public string State { get; set; }
         public int Zip { get; set; }
         //May need to insert a Foreign Key for UserRolesID.
-        
+        public virtual ICollection<Subjects> Subjects { get; set; }
     }
 }

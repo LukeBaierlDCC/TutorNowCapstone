@@ -18,6 +18,9 @@ namespace TutorNow.Controllers
         // GET: Student
         public ActionResult Index()
         {
+            //var userLoggedin = User.Identity.GetUserId();
+
+            //var students = db.Student.Where(s => s.UserId == userLoggedin).Include;
             return View();
         }
 
