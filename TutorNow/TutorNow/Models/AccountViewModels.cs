@@ -48,13 +48,9 @@ namespace TutorNow.Models
 
     public class LoginViewModel
     {
+        [Required]
         [Display(Name = "UserName")]
         public string UserName { get; set; }
-     
-        [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -63,7 +59,8 @@ namespace TutorNow.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
-        
+        public Student student { get; set; }
+        public Tutor tutor { get; set; }
     }
 
     public class RegisterViewModel

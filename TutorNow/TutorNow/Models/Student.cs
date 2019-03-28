@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -7,13 +9,19 @@ namespace TutorNow.Models
 {
     public class Student
     {
-        public int ID { get; set; }
+        [Key]
+        public int StudentId { get; set; }
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
         public string City { get; set; }
         public string State { get; set; }
         public int Zip { get; set; }
         //May need to insert a Foreign Key for UserRolesID.
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser Application { get; set; }
         public virtual ICollection<Subjects> Subjects { get; set; }
     }
 }

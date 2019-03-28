@@ -1,21 +1,20 @@
-﻿//using Microsoft.AspNet.Identity;
-//using Microsoft.Owin.BuilderProperties;
+﻿using TutorNow.Models;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using TutorNow.Models;
 
 namespace TutorNow.Controllers
 {
     public class StudentController : Controller
     {
-        //ApplicationDbContext db = new ApplicationDbContext();
+        //ApplicationDbContext db;
         // GET: Student
+        public StudentController()
+        {
+            //db = new ApplicationDbContext();
+        }
         public ActionResult Index()
         {
             //var userLoggedin = User.Identity.GetUserId();
@@ -25,10 +24,19 @@ namespace TutorNow.Controllers
         }
 
         // GET: Student/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+        //public ActionResult Details(int id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Student student = db.Students.Find(id);
+        //    if (student == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(student);
+        //}
 
         // GET: Student/Create
         public ActionResult Create()
@@ -37,20 +45,24 @@ namespace TutorNow.Controllers
         }
 
         // POST: Student/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //[HttpPost]
+        //public ActionResult Create([Bind(Include = "FirstName, LastName, City, State, Zip")]Student student)
+        //{
+        //    try
+        //    {
+        //        // TODO: Add insert logic here
+        //        if (ModelState.IsValid)
+        //        {
+        //            /*db.Students.Add(student);
+        //            db.SaveChanges();*/
+        //            return RedirectToAction("Index");
+        //        }
+        //    }
+        //    catch /*(Data)*/
+        //    {
+        //        return View();
+        //    }
+        //}
 
         // GET: Student/Edit/5
         public ActionResult Edit(int id)
