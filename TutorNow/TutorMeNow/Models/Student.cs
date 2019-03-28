@@ -32,6 +32,7 @@ namespace TutorMeNow.Models
     }
     public class Subject
     {
+        //I should have created a separate class for this. I don't know why I added it here. Followed this video a little too closely: https://www.youtube.com/watch?v=RFQlwIvvS-M&t=511s
         [Key]
         public int SubjectId { get; set; }
         [Required]

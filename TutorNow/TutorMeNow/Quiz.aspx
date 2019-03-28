@@ -17,10 +17,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:RadioButton ID="RadioButton1" runat="server" /><br />
-                        <asp:RadioButton ID="RadioButton2" runat="server" /><br />
-                        <asp:RadioButton ID="RadioButton3" runat="server" /><br />
-                        <asp:RadioButton ID="RadioButton4" runat="server" /><br />
+                        <asp:RadioButton GroupName="Quiz" ID="RadioButton1" runat="server" /><br />
+                        <asp:RadioButton GroupName="Quiz" ID="RadioButton2" runat="server" /><br />
+                        <asp:RadioButton GroupName="Quiz" ID="RadioButton3" runat="server" /><br />
+                        <asp:RadioButton GroupName="Quiz" ID="RadioButton4" runat="server" /><br />
                     </td>
                 </tr>
                 <tr>
