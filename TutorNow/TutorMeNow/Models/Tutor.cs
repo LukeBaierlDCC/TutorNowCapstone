@@ -7,11 +7,10 @@ using System.Web;
 
 namespace TutorMeNow.Models
 {
-    public enum Gender { Male,Female }
-    public class Student
+    public class Tutor
     {
         [Key]
-        public int StudentId { get; set; }
+        public int TutorId { get; set; }
         [Display(Name = "First Name")]
         [Required]
         public string FirstName { get; set; }
@@ -22,20 +21,12 @@ namespace TutorMeNow.Models
         public string State { get; set; }
         public int Zip { get; set; }
         public Gender? Gender { get; set; }
+        public int AvgRating { get; set; }
         [Required]
         [Display(Name = "Subject")]
         public int SubjectId { get; set; }
         public virtual Subject SubjectName { get; set; }
-        public virtual ICollection<Subject> Subject { get; set; }
         //[ForeignKeyAttribute("ApplicationUser")]
         //public string ApplicationUserId { get; set; }
-    }
-    public class Subject
-    {
-        [Key]
-        public int SubjectId { get; set; }
-        [Required]
-        [Display(Name = "Course Subject")]
-        public string SubjectName { get; set; }
     }
 }

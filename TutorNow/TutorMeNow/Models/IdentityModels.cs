@@ -29,5 +29,9 @@ namespace TutorMeNow.Models
         {
             return new ApplicationDbContext();
         }
+        DbSet<Student> Students { get; set; }
+        DbSet<Subject> Subjects { get; set; }
+        DbSet<Tutor> Tutors { get; set; }
+
     }
 }
