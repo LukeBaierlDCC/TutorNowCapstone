@@ -191,15 +191,28 @@
     <Compile Include="Migrations\201903281937418_InitializeTutor.Designer.cs">
       <DependentUpon>201903281937418_InitializeTutor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903281953084_RatingAndSubcategories.cs" />
+    <Compile Include="Migrations\201903281953084_RatingAndSubcategories.Designer.cs">
+      <DependentUpon>201903281953084_RatingAndSubcategories.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentContext.cs" />
+    <Compile Include="Models\StudentProgress.cs" />
     <Compile Include="Models\Subcategories.cs" />
     <Compile Include="Models\Tutor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quiz.aspx.cs">
+      <DependentUpon>Quiz.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Quiz.aspx.designer.cs">
+      <DependentUpon>Quiz.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +224,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Quiz.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1-vsdoc.js" />
@@ -284,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903281937418_InitializeTutor.resx">
       <DependentUpon>201903281937418_InitializeTutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903281953084_RatingAndSubcategories.resx">
+      <DependentUpon>201903281953084_RatingAndSubcategories.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
