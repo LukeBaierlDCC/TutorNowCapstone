@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -29,10 +30,12 @@ namespace TutorMeNow.Models
         {
             return new ApplicationDbContext();
         }
-        DbSet<Student> Students { get; set; }
-        DbSet<Subject> Subjects { get; set; }
-        DbSet<Tutor> Tutors { get; set; }
+        DbSet<Student> students { get; set; }
+        DbSet<Subject> subjects { get; set; }
+        DbSet<Tutor> tutors { get; set; }
         DbSet<Rating> ratings { get; set; }
         DbSet<StudentProgress> studentProgresses { get; set; }
+        public object Students { get; set; }
+        public object Tutors { get; set; }
     }
 }

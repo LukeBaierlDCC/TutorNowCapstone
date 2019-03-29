@@ -26,7 +26,8 @@ namespace TutorMeNow.Models
         [Display(Name = "Subject")]
         public int SubjectId { get; set; }
         public virtual Subject SubjectName { get; set; }
-        //[ForeignKeyAttribute("ApplicationUser")]
-        //public string ApplicationUserId { get; set; }
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }

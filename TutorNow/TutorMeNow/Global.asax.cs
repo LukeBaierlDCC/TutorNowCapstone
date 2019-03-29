@@ -10,7 +10,7 @@ using System.Web.SessionState;
 
 namespace TutorMeNow
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
