@@ -177,6 +177,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\SubcategoriesController.cs" />
     <Compile Include="Controllers\TutorController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Extensions.cs" />
@@ -286,6 +287,11 @@
     <Content Include="Views\Student\HighestRatedTutors.cshtml" />
     <Content Include="Views\Student\GiveRating.cshtml" />
     <Content Include="Views\Student\StudentHome.cshtml" />
+    <Content Include="Views\Subcategories\Create.cshtml" />
+    <Content Include="Views\Subcategories\Delete.cshtml" />
+    <Content Include="Views\Subcategories\Details.cshtml" />
+    <Content Include="Views\Subcategories\Edit.cshtml" />
+    <Content Include="Views\Subcategories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

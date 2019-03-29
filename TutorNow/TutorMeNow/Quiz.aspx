@@ -31,7 +31,7 @@
                 </tr>
             </table>
 
-            <asp:RadioButton ID="RadioButton1" runat="server" />
+            <asp:RadioButton ID="RadioButtonA" runat="server" />
 
 
         </div>

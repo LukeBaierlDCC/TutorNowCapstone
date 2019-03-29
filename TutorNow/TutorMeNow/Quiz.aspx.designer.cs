@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TutorMeNow {
+//namespace TutorMeNow {
     
     
-    public partial class Quiz {
+    //public partial class Quiz {
         
         /// <summary>
         /// form1 control.
@@ -19,7 +19,7 @@ namespace TutorMeNow {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        //protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
         /// Label1 control.
@@ -28,7 +28,7 @@ namespace TutorMeNow {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        //protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
         /// RadioButton1 control.
@@ -37,7 +37,7 @@ namespace TutorMeNow {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RadioButton1;
+        //protected global::System.Web.UI.WebControls.RadioButton RadioButton1;
         
         /// <summary>
         /// RadioButton2 control.
@@ -46,7 +46,7 @@ namespace TutorMeNow {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RadioButton2;
+        //protected global::System.Web.UI.WebControls.RadioButton RadioButton2;
         
         /// <summary>
         /// RadioButton3 control.
@@ -55,7 +55,7 @@ namespace TutorMeNow {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RadioButton3;
+        //protected global::System.Web.UI.WebControls.RadioButton RadioButton3;
         
         /// <summary>
         /// RadioButton4 control.
@@ -64,7 +64,7 @@ namespace TutorMeNow {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RadioButton4;
+        //protected global::System.Web.UI.WebControls.RadioButton RadioButton4;
         
         /// <summary>
         /// btnSubmit control.
@@ -73,7 +73,7 @@ namespace TutorMeNow {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit;
+        //protected global::System.Web.UI.WebControls.Button btnSubmit;
         
         /// <summary>
         /// btnCheck control.
@@ -82,7 +82,7 @@ namespace TutorMeNow {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCheck;
+        //protected global::System.Web.UI.WebControls.Button btnCheck;
         
         /// <summary>
         /// RadioButton1 control.
@@ -91,6 +91,6 @@ namespace TutorMeNow {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RadioButton1;
-    }
-}
+//        protected global::System.Web.UI.WebControls.RadioButton RadioButton1;
+//    }
+//}

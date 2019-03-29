@@ -57,24 +57,24 @@ namespace TutorMeNow.Controllers
         //    var CurrentUser = User.Identity.GetUserId();
 
         //    var tutorFound = db.tutors.Where(t => t.ApplicationUserId == CurrentUser).SingleOrDefault();
-            //try
-            //{
-            //    var CreateNewSubcategory = new Subcategories
-            //    {
+        //    try
+        //    {
+        //        var CreateNewSubcategory = new Subcategories
+        //        {
 
-            //        SubjectId = tutorFound.TutorId,
-            //        SubcatId = tutorFound.TutorId
+        //            SubjectId = tutorFound.TutorId,
+        //            SubcatId = tutorFound.TutorId
 
-            //    };
+        //        };
 
-            //    db.tutors.Add(CreateNewSubcategory);
-            //    db.SaveChanges();
-            //    return View("Subcategories");
-            //}
-            //catch
-            //{
-            //    return View("Subcategories");
-            //}
+        //        db.tutors.Add(CreateNewSubcategory);
+        //        db.SaveChanges();
+        //        return View("Subcategories");
+        //    }
+        //    catch
+        //    {
+        //        return View("Subcategories");
+        //    }
         //}
 
         public ActionResult EditTutor(int id)
