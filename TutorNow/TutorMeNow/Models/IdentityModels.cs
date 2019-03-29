@@ -30,12 +30,10 @@ namespace TutorMeNow.Models
         {
             return new ApplicationDbContext();
         }
-        DbSet<Student> students { get; set; }
-        DbSet<Subject> subjects { get; set; }
-        DbSet<Tutor> tutors { get; set; }
-        DbSet<Rating> ratings { get; set; }
-        DbSet<StudentProgress> studentProgresses { get; set; }
-        public object Students { get; set; }
-        public object Tutors { get; set; }
+        public DbSet<Student> students { get; set; }
+        public DbSet<Subject> subjects { get; set; }
+        public DbSet<Tutor> tutors { get; set; }
+        public DbSet<Rating> ratings { get; set; }
+        public DbSet<StudentProgress> studentProgresses { get; set; }
     }
 }

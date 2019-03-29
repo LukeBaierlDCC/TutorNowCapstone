@@ -23,11 +23,15 @@ namespace TutorMeNow.Models
         public Gender? Gender { get; set; }
         public int AvgRating { get; set; }
         [Required]
+        public DateTime PastSession { get; set; }
+        [Required]
         [Display(Name = "Subject")]
         public int SubjectId { get; set; }
         public virtual Subject SubjectName { get; set; }
         [ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
+
     }
 }
+    

@@ -8,18 +8,13 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using TutorMeNow.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace TutorMeNow.Controllers
 {
     public class StudentController : Controller
     {
-        ApplicationDbContext db;
-        // GET: Student
-
-        public StudentController()
-        {
-            db = new ApplicationDbContext();
-        }
+        ApplicationDbContext db = new ApplicationDbContext();
 
         //public ActionResult StudentHome()
         //{
@@ -55,22 +50,37 @@ namespace TutorMeNow.Controllers
             return View();
         }
 
-        // GET: Student/Details/5
-        //public ActionResult Details(int? id)
+        //public ActionResult Filter(string id)
         //{
-            //if(id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //Student student = db.Students.Find(id);
-            //if (student == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //return View(student);
+            
+        //    var CurrentUser = User.Identity.GetUserId();
+        //    var studentFound = db.students.Where(g => g.ApplicationUserId == CurrentUser).SingleOrDefault();
+
+        //    var filteredTutors = db.tutors.Where(t => t.subject.ToString() == id && t.Zip == studentFound.Zip).ToList();
+        //    return View(filteredTutors);
         //}
 
-        // GET: Student/Create
+        //public ActionResult FilterHighRating()
+        //{
+        //    var allTutors = db.tutors.ToList();
+        //    var newList = allTutors.OrderByDescending(t => t.Rating).ToList();
+        //    return View(newList);
+        //}
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Student student = db.students.Find(id);
+            if (student == null)
+            {
+                return HttpNotFound();
+            }
+            return View(student);
+        }
+
         public ActionResult Create()
         {
             Student student = new Student();
@@ -84,12 +94,11 @@ namespace TutorMeNow.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
                 if (ModelState.IsValid)
                 {
-                    //db.Students.Add(student);
-                    //student.ApplicationUserId = User.Identity.GetUserId();
-                    //db.SaveChanges();
+                    db.students.Add(student);
+                    student.ApplicationUserId = User.Identity.GetUserId();
+                    db.SaveChanges();
                     return RedirectToAction("StudentHome");
                 }
 
@@ -101,34 +110,74 @@ namespace TutorMeNow.Controllers
             return View(student);
         }
 
-        // GET: Student/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult GiveRating(int id)
         {
-            return View();
+            try
+            {
+                var ratedTutor = db.tutors.Where(t => t.TutorId == id).SingleOrDefault();
+                return View(ratedTutor);
+            }
+            catch
+            {
+                return View();
+            }
         }
 
-        // POST: Student/Edit/5
-        //public ActionResult Edit(int id/*, FormCollection collection*/)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add update logic here
-        //        var editedStudent = db.Students.Where(s => s.StudentId == id).SingleOrDefault();
+        [HttpPost]
+        public ActionResult GiveRating(int id, Tutor ratedTutor)
+        {
+            var thisTutor = db.tutors.Where(e => e.TutorId == id).SingleOrDefault();
+            if (DateTime.Now > thisTutor.PastSession)
+            {
+                Rating rating = new Rating();
+                rating.AvgRating = ratedTutor.AvgRating;
+                rating.TutorId = thisTutor.TutorId;
+                db.ratings.Add(rating);
+                db.SaveChanges();
+                var tutorsRatings = db.ratings.Where(r => r.TutorId == id).ToList();
+                List<int> selectedRatings = new List<int>();
+                foreach (var filteredRating in tutorsRatings)
+                {
+                    selectedRatings.Add(filteredRating.AvgRating);
+                }
+                int sum = selectedRatings.Sum();
+                int avgRating = sum / selectedRatings.Count;
+                thisTutor.AvgRating = avgRating;
+                
 
-        //        return View(editedStudent);
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
+                ratedTutor.AvgRating = thisTutor.AvgRating;
+
+                db.SaveChanges();
+
+            }
+            return RedirectToAction("StudentHome");
+        }
+
+        //public ActionResult Edit(int id)
+        //{
+        //    return View();
         //}
 
+        public ActionResult Edit(int id/*, FormCollection collection*/)
+        {
+            try
+            {
+                var editedStudent = db.students.Where(s => s.StudentId == id).SingleOrDefault();
+
+                return View(editedStudent);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         //[HttpPost]
-        //public ActionResult Edit(int id, Student student)
+        //public ActionResult Edit(Student student)
         //{
         //    try
         //    {
-        //        Student thisStudent = db.Students.Find(id);
+        //        Student thisStudent = db.students.Find.Id;
 
         //        thisStudent.FirstName = student.FirstName;
         //        thisStudent.LastName = student.LastName;
@@ -136,26 +185,24 @@ namespace TutorMeNow.Controllers
 
         //        db.SaveChanges();
 
-        //        return RedirectToAction("StudentHome")
+        //        return RedirectToAction("StudentHome");
         //    }
         //    catch
         //    {
         //        return View(student);
         //    }
         //}
-        // GET: Student/Delete/5
+
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Student/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
 
                 return RedirectToAction("StudentHome");
             }
