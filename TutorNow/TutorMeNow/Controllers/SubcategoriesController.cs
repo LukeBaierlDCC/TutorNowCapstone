@@ -10,107 +10,107 @@ using TutorMeNow.Models;
 
 namespace TutorMeNow.Controllers
 {
-    public class SubcategoriesController : Controller
+    public class SubcategoryController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Subcategories
+        // GET: Subcategory
         public ActionResult Index()
         {
-            return View(db.Subcategories.ToList());
+            return View(db.Subcategory.ToList());
         }
 
-        // GET: Subcategories/Details/5
+        // GET: Subcategory/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Subcategories subcategories = db.Subcategories.Find(id);
-            if (subcategories == null)
+            Subcategory Subcategory = db.Subcategory.Find(id);
+            if (Subcategory == null)
             {
                 return HttpNotFound();
             }
-            return View(subcategories);
+            return View(Subcategory);
         }
 
-        // GET: Subcategories/Create
+        // GET: Subcategory/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Subcategories/Create
+        // POST: Subcategory/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SubcatId,SubjectId,name")] Subcategories subcategories)
+        public ActionResult Create([Bind(Include = "SubcatId,SubjectId,name")] Subcategory Subcategory)
         {
             if (ModelState.IsValid)
             {
-                db.Subcategories.Add(subcategories);
+                db.Subcategory.Add(Subcategory);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(subcategories);
+            return View(Subcategory);
         }
 
-        // GET: Subcategories/Edit/5
+        // GET: Subcategory/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Subcategories subcategories = db.Subcategories.Find(id);
-            if (subcategories == null)
+            Subcategory Subcategory = db.Subcategory.Find(id);
+            if (Subcategory == null)
             {
                 return HttpNotFound();
             }
-            return View(subcategories);
+            return View(Subcategory);
         }
 
-        // POST: Subcategories/Edit/5
+        // POST: Subcategory/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SubcatId,SubjectId,name")] Subcategories subcategories)
+        public ActionResult Edit([Bind(Include = "SubcatId,SubjectId,name")] Subcategory Subcategory)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(subcategories).State = EntityState.Modified;
+                db.Entry(Subcategory).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(subcategories);
+            return View(Subcategory);
         }
 
-        // GET: Subcategories/Delete/5
+        // GET: Subcategory/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Subcategories subcategories = db.Subcategories.Find(id);
-            if (subcategories == null)
+            Subcategory Subcategory = db.Subcategory.Find(id);
+            if (Subcategory == null)
             {
                 return HttpNotFound();
             }
-            return View(subcategories);
+            return View(Subcategory);
         }
 
-        // POST: Subcategories/Delete/5
+        // POST: Subcategory/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Subcategories subcategories = db.Subcategories.Find(id);
-            db.Subcategories.Remove(subcategories);
+            Subcategory Subcategory = db.Subcategory.Find(id);
+            db.Subcategory.Remove(Subcategory);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

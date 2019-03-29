@@ -7,16 +7,16 @@ using System.Web;
 
 namespace TutorMeNow.Models
 {
-    public class Subcategories
+    public class Subcategory
     {
         [Key]
-        public int SubcatId { get; set; }
+        public int SubcategoryId { get; set; }
         public int SubjectId { get; set; }
         public string Name { get; set; }
         public string English { get; set; }
         public string Math { get; set; }
         public string Science { get; set; }
-        public virtual ICollection<Subcategories> GetSubcategories { get; set; }
+        public virtual ICollection<Subcategory> GetSubcategory { get; set; }
     }
 
     public enum Subjects
@@ -26,7 +26,7 @@ namespace TutorMeNow.Models
         Science
     }
 
-    public enum EnglishSubcategories
+    public enum EnglishSubcategory
     {
         ArgumentativeWriting,
         CriticalAnalysis,
@@ -37,7 +37,7 @@ namespace TutorMeNow.Models
 
     }
 
-    public enum MathSubcategories
+    public enum MathSubcategory
     {
         Arithmetic,
         AlgebraOne,
@@ -50,7 +50,7 @@ namespace TutorMeNow.Models
         Trigonometry
     }
 
-    public enum ScienceSubcategories
+    public enum ScienceSubcategory
     {
         Biology,
         Chemistry,

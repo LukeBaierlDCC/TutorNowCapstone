@@ -47,19 +47,19 @@ namespace TutorMeNow.Controllers
 
         public ActionResult CreateNewSubcategory(string id)
         {
-            Subcategories newSubcategory = new Subcategories();
+            Subcategory newSubcategory = new Subcategory();
             return View(newSubcategory);
         }
 
         //[HttpPost]
-        //public ActionResult CreateNewSubcategory(Subcategories subcategories)
+        //public ActionResult CreateNewSubcategory(Subcategory Subcategory)
         //{
         //    var CurrentUser = User.Identity.GetUserId();
 
         //    var tutorFound = db.tutors.Where(t => t.ApplicationUserId == CurrentUser).SingleOrDefault();
         //    try
         //    {
-        //        var CreateNewSubcategory = new Subcategories
+        //        var CreateNewSubcategory = new Subcategory
         //        {
 
         //            SubjectId = tutorFound.TutorId,
@@ -69,11 +69,11 @@ namespace TutorMeNow.Controllers
 
         //        db.tutors.Add(CreateNewSubcategory);
         //        db.SaveChanges();
-        //        return View("Subcategories");
+        //        return View("Subcategory");
         //    }
         //    catch
         //    {
-        //        return View("Subcategories");
+        //        return View("Subcategory");
         //    }
         //}
 

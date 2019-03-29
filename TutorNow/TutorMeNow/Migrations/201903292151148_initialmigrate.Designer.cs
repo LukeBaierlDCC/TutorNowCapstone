@@ -7,13 +7,13 @@ namespace TutorMeNow.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class thing : IMigrationMetadata
+    public sealed partial class initialmigrate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(thing));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initialmigrate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201903281901118_thing"; }
+            get { return "201903292151148_initialmigrate"; }
         }
         
         string IMigrationMetadata.Source

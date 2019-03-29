@@ -184,21 +184,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903281901118_thing.cs" />
-    <Compile Include="Migrations\201903281901118_thing.Designer.cs">
-      <DependentUpon>201903281901118_thing.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903281904249_poop.cs" />
-    <Compile Include="Migrations\201903281904249_poop.Designer.cs">
-      <DependentUpon>201903281904249_poop.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903281937418_InitializeTutor.cs" />
-    <Compile Include="Migrations\201903281937418_InitializeTutor.Designer.cs">
-      <DependentUpon>201903281937418_InitializeTutor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903281953084_RatingAndSubcategories.cs" />
-    <Compile Include="Migrations\201903281953084_RatingAndSubcategories.Designer.cs">
-      <DependentUpon>201903281953084_RatingAndSubcategories.cs</DependentUpon>
+    <Compile Include="Migrations\201903292151148_initialmigrate.cs" />
+    <Compile Include="Migrations\201903292151148_initialmigrate.Designer.cs">
+      <DependentUpon>201903292151148_initialmigrate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -206,9 +194,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Student.cs" />
-    <Compile Include="Models\StudentContext.cs" />
     <Compile Include="Models\StudentProgress.cs" />
-    <Compile Include="Models\Subcategories.cs" />
+    <Compile Include="Models\Subcategory.cs" />
     <Compile Include="Models\Tutor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quiz.aspx.cs">
@@ -287,11 +274,11 @@
     <Content Include="Views\Student\HighestRatedTutors.cshtml" />
     <Content Include="Views\Student\GiveRating.cshtml" />
     <Content Include="Views\Student\StudentHome.cshtml" />
-    <Content Include="Views\Subcategories\Create.cshtml" />
-    <Content Include="Views\Subcategories\Delete.cshtml" />
-    <Content Include="Views\Subcategories\Details.cshtml" />
-    <Content Include="Views\Subcategories\Edit.cshtml" />
-    <Content Include="Views\Subcategories\Index.cshtml" />
+    <Content Include="Views\Subcategory\Create.cshtml" />
+    <Content Include="Views\Subcategory\Delete.cshtml" />
+    <Content Include="Views\Subcategory\Details.cshtml" />
+    <Content Include="Views\Subcategory\Edit.cshtml" />
+    <Content Include="Views\Subcategory\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -311,17 +298,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903281901118_thing.resx">
-      <DependentUpon>201903281901118_thing.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903281904249_poop.resx">
-      <DependentUpon>201903281904249_poop.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903281937418_InitializeTutor.resx">
-      <DependentUpon>201903281937418_InitializeTutor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903281953084_RatingAndSubcategories.resx">
-      <DependentUpon>201903281953084_RatingAndSubcategories.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903292151148_initialmigrate.resx">
+      <DependentUpon>201903292151148_initialmigrate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
