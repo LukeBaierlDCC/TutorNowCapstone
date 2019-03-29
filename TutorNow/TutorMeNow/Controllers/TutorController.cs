@@ -1,14 +1,17 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TutorMeNow.Models;
 
 namespace TutorMeNow.Controllers
 {
     public class TutorController : Controller
     {
-        // GET: Tutor
+        ApplicationDbContext db = new ApplicationDbContext();
+
         public ActionResult Index()
         {
             return View();
@@ -20,21 +23,21 @@ namespace TutorMeNow.Controllers
             return View();
         }
 
-        // GET: Tutor/Create
-        public ActionResult Create()
+        public ActionResult CreateTutor()
         {
-            return View();
+            Tutor tutor = new Tutor();
+            return View("CreateTutor", tutor);
         }
 
-        // POST: Tutor/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult CreateTutor(Tutor tutor)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                db.tutors.Add(tutor);
+                tutor.ApplicationUserId = User.Identity.GetUserId();
+                db.SaveChanges();
+                return RedirectToAction("Tutors");
             }
             catch
             {
@@ -42,25 +45,61 @@ namespace TutorMeNow.Controllers
             }
         }
 
-        // GET: Tutor/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult CreateNewSubcategory(string id)
         {
-            return View();
+            Subcategories newSubcategory = new Subcategories();
+            return View(newSubcategory);
         }
 
-        // POST: Tutor/Edit/5
+        //[HttpPost]
+        //public ActionResult CreateNewSubcategory(Subcategories subcategories)
+        //{
+        //    var CurrentUser = User.Identity.GetUserId();
+
+        //    var tutorFound = db.tutors.Where(t => t.ApplicationUserId == CurrentUser).SingleOrDefault();
+            //try
+            //{
+            //    var CreateNewSubcategory = new Subcategories
+            //    {
+
+            //        SubjectId = tutorFound.TutorId,
+            //        SubcatId = tutorFound.TutorId
+
+            //    };
+
+            //    db.tutors.Add(CreateNewSubcategory);
+            //    db.SaveChanges();
+            //    return View("Subcategories");
+            //}
+            //catch
+            //{
+            //    return View("Subcategories");
+            //}
+        //}
+
+        public ActionResult EditTutor(int id)
+        {
+            var editedTutor = db.tutors.Where(t => t.TutorId == id).SingleOrDefault();
+            return View(editedTutor);
+        }
+
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult EditTutor(int id, Tutor tutor)
         {
             try
             {
-                // TODO: Add update logic here
+                var editedTutor = db.tutors.Where(t => t.TutorId == id).SingleOrDefault();
+                editedTutor.FirstName = tutor.FirstName;
+                editedTutor.LastName = tutor.LastName;
+                editedTutor.City = tutor.City;
+                editedTutor.Zip = tutor.Zip;
+                db.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Tutors");
             }
             catch
             {
-                return View();
+                return View("Tutors");
             }
         }
 

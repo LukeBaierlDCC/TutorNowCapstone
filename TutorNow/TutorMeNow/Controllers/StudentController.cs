@@ -16,56 +16,56 @@ namespace TutorMeNow.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
-        //public ActionResult StudentHome()
-        //{
-        //    var userLoggedIn = User.Identity.GetUserId();
-        //    var currentStudent = db.Students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
-        //    var currentZip = db.Students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
-        //    var currentSubject = db.Students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
-        //    var tutorsInZip = db.Tutors.Where(t => t.Zip == currentStudent.Zip).ToList();
+        public ActionResult StudentHome()
+        {
+            var userLoggedIn = User.Identity.GetUserId();
+            var currentStudent = db.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
+            var currentZip = db.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
+            var currentSubject = db.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
+            var tutorsInZip = db.tutors.Where(t => t.Zip == currentStudent.Zip).ToList();
 
-        //    List<Tutor> tutors = new List<Tutor> { };
+            List<Tutor> tutors = new List<Tutor> { };
 
-        //    foreach (var foundTutor in tutorsInZip)
-        //    {
+            //foreach (var foundTutor in tutorsInZip)
+            //{
+            //    int tutorZip = GetSubject(foundTutor.SubjectName);
+            //    if (tutorsInZip == currentZip)
+            //    {
+            //        tutorsInZip.Add(foundTutor);
+            //    }
+            //}
+            //var typeList = Enum.GetNames(typeof(Subjects))
+            //.Cast<>(Subjects)
+            //.Select(t => new AccessClass
+            //{
+            //    Subject = ((Subjects)t),
+            //});
 
-        //        if (tutorsInZip == currentZip)
-        //        {
-        //            tutorsInZip.Add(foundTutor);
-        //        }
-        //    }
-        //    var typeList = Enum.GetNames(typeof(Subjects))
-        //    .Cast<>(Subjects)
-        //    .Select(t => new AccessClass
-        //    {
-        //        Subject = ((Subjects)t),
-        //    });
+            //ViewBag.ListData = typeList;
 
-        //    ViewBag.ListData = typeList;
-
-        //    return View(tutorsInZip);
-        //}
+            return View(tutorsInZip);
+        }
         public ActionResult Index()
         {
             return View();
         }
 
-        //public ActionResult Filter(string id)
-        //{
-            
-        //    var CurrentUser = User.Identity.GetUserId();
-        //    var studentFound = db.students.Where(g => g.ApplicationUserId == CurrentUser).SingleOrDefault();
+        public ActionResult Filter(string id)
+        {
 
-        //    var filteredTutors = db.tutors.Where(t => t.subject.ToString() == id && t.Zip == studentFound.Zip).ToList();
-        //    return View(filteredTutors);
-        //}
+            var CurrentUser = User.Identity.GetUserId();
+            var studentFound = db.students.Where(g => g.ApplicationUserId == CurrentUser).SingleOrDefault();
 
-        //public ActionResult FilterHighRating()
-        //{
-        //    var allTutors = db.tutors.ToList();
-        //    var newList = allTutors.OrderByDescending(t => t.Rating).ToList();
-        //    return View(newList);
-        //}
+            var filteredTutors = db.tutors.Where(t => t.SubjectName.ToString() == id && t.Zip == studentFound.Zip).ToList();
+            return View(filteredTutors);
+        }
+
+        public ActionResult FilterHighRating()
+        {
+            var allTutors = db.tutors.ToList();
+            var newList = allTutors.OrderByDescending(t => t.AvgRating).ToList();
+            return View(newList);
+        }
 
         public ActionResult Details(int? id)
         {
@@ -81,16 +81,15 @@ namespace TutorMeNow.Controllers
             return View(student);
         }
 
-        public ActionResult Create()
+        public ActionResult CreateStudent()
         {
             Student student = new Student();
             return View(student);
         }
 
-        // POST: Student/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StudentId,FirstName,LastName,Zip")]Student student)
+        public ActionResult Create([Bind(Include = "StudentId,FirstName,LastName,City,State,Zip,Subject,Subcategory")]Student student)
         {
             try
             {

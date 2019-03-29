@@ -11,7 +11,7 @@ namespace TutorMeNow.Models
         [Key]
         public int SubcatId { get; set; }
         public int SubjectId { get; set; }
-        public string name { get; set; }
+        public string Name { get; set; }
     }
 
     public enum Subjects

@@ -276,11 +276,19 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Student\Create.cshtml" />
+    <Content Include="Views\Student\Details.cshtml" />
+    <Content Include="Views\Student\Edit.cshtml" />
+    <Content Include="Views\Tutor\Create.cshtml" />
+    <Content Include="Views\Tutor\Details.cshtml" />
+    <Content Include="Views\Tutor\Edit.cshtml" />
+    <Content Include="Views\Student\FilterList.cshtml" />
+    <Content Include="Views\Student\HighestRatedTutors.cshtml" />
+    <Content Include="Views\Student\GiveRating.cshtml" />
+    <Content Include="Views\Student\StudentHome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Student\" />
-    <Folder Include="Views\Tutor\" />
     <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
