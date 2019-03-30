@@ -23,8 +23,12 @@ namespace TutorMeNow
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/materia.css",
+                      "~/Content/united.css",
                       "~/Content/site.css"));
+
+            //bundles.Add(new StyleBundle("~/Content/css").Include(
+            //          "~/Content/materia.css",
+            //          "~/Content/site.css"));
         }
     }
 }
