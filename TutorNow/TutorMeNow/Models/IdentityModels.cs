@@ -36,5 +36,6 @@ namespace TutorMeNow.Models
         public DbSet<Rating> ratings { get; set; }
         public DbSet<StudentProgress> studentProgresses { get; set; }
         public DbSet<Subcategory> Subcategory { get; set; }
+        
     }
 }

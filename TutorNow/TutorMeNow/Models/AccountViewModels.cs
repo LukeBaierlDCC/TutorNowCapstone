@@ -49,6 +49,11 @@ namespace TutorMeNow.Models
     public class LoginViewModel
     {
         [Required]
+        [Display(Name = "UserName")]
+
+        public string UserName { get; set; }
+
+        [Required]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
@@ -64,6 +69,15 @@ namespace TutorMeNow.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "Roles")]
+        public string UserRoles { get; set; }
+
+        [Required]
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

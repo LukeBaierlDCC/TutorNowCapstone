@@ -10,7 +10,12 @@ namespace TutorMeNow.Controllers
 {
     public class TutorController : Controller
     {
-        ApplicationDbContext db = new ApplicationDbContext();
+        //ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db;
+        public TutorController()
+        {
+            db = new ApplicationDbContext();
+        }
 
         public ActionResult Index()
         {

@@ -14,37 +14,45 @@ namespace TutorMeNow.Controllers
 {
     public class StudentController : Controller
     {
-        ApplicationDbContext db = new ApplicationDbContext();
-
-        public ActionResult StudentHome()
+        //ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db;
+        public StudentController()
         {
-            var userLoggedIn = User.Identity.GetUserId();
-            var currentStudent = db.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
-            var currentZip = db.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
-            var currentSubject = db.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
-            var tutorsInZip = db.tutors.Where(t => t.Zip == currentStudent.Zip).ToList();
-
-            List<Tutor> tutors = new List<Tutor> { };
-
-            //foreach (var foundTutor in tutorsInZip)
-            //{
-            //    int tutorZip = GetSubject(foundTutor.SubjectName);
-            //    if (tutorsInZip == currentZip)
-            //    {
-            //        tutorsInZip.Add(foundTutor);
-            //    }
-            //}
-            //var typeList = Enum.GetNames(typeof(Subjects))
-            //.Cast<>(Subjects)
-            //.Select(t => new AccessClass
-            //{
-            //    Subject = ((Subjects)t),
-            //});
-
-            //ViewBag.ListData = typeList;
-
-            return View(tutorsInZip);
+            db = new ApplicationDbContext();
         }
+
+        //public ActionResult StudentHome()
+        //{
+        //    var userLoggedIn = User.Identity.GetUserId();
+        //    var currentStudent = db.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
+        //    var currentZip = db.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
+        //    var currentSubject = db.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
+        //    var tutorsInZip = db.tutors.Where(t => t.Zip == currentStudent.Zip).ToList();
+
+        //    List<Models.Tutor> tutors = new List<Models.Tutor> { };
+
+        //    foreach (var foundTutor in tutorsInZip)
+        //    {
+        //        //int currentZip = foundTutor.Zip;
+        //        if (tutorsInZip == currentZip)
+        //        {
+        //            tutorsInZip.Add(foundTutor);
+        //        }
+        //        {
+        //            tutors.Add(foundTutor);
+        //        }
+        //    }
+        //    var typeList = Enum.GetValues(typeof(Subjects))
+        //    .Cast<Subjects>()
+        //    .Select(t => new AccessClass
+        //    {
+        //        Subject = ((Subjects)t),
+        //    });
+
+        //    ViewBag.ListData = typeList;
+
+        //    return View(tutorsInZip);
+        //}
         public ActionResult Index()
         {
             return View();
