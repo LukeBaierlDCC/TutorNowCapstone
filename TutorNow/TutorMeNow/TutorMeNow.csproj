@@ -188,6 +188,10 @@
     <Compile Include="Migrations\201903292151148_initialmigrate.Designer.cs">
       <DependentUpon>201903292151148_initialmigrate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904011401135_initialwishal.cs" />
+    <Compile Include="Migrations\201904011401135_initialwishal.Designer.cs">
+      <DependentUpon>201904011401135_initialwishal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -304,6 +308,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201903292151148_initialmigrate.resx">
       <DependentUpon>201903292151148_initialmigrate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904011401135_initialwishal.resx">
+      <DependentUpon>201904011401135_initialwishal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

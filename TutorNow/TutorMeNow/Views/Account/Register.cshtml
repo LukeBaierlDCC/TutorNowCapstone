@@ -10,6 +10,18 @@
     @Html.AntiForgeryToken()
     <h4>Create a new account.</h4>
     <hr />
+    @*<div class="form-group">
+        @Html.LabelFor(m => m.UserRoles, "User Role", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">*@
+            @*@Html.DropDownListFor(m => m.UserRoles, Model.Roles)
+            @Html.DropDownList("UserRoles", (SelectList)ViewBag.Name, " ")
+            @Html.DropDownList(model => model.UserRoles, Model.UserRoles, "Please select")
+            @Html.DropDownListFor(model => model.UserRoles, Model.UserRoles ,"Select a role")*@
+            @*@Html.DropDownList("SelectedRoleId", (SelectList)ViewBag.Name, "Please Select Role")*@
+
+            @*@Html.ValidationMessageFor(m => m.SelectRoleId)*@
+        @*</div>
+    </div>*@
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
@@ -30,10 +42,19 @@
         </div>
     </div>
     <div class="form-group">
+        @Html.LabelFor(m => m.UserRole, new { @class = "col-md-2 control-label" })
         <div class="col-md-offset-2 col-md-10">
+            @Html.RadioButtonFor(m => m.UserRole, "Student", new { @class = "radio-inline" })@Html.Label("Student")
+            @Html.RadioButtonFor(m => m.UserRole, "Tutor", new { @class = "radio-inline" })@Html.Label("Tutor")
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Register" />
         </div>
     </div>
+
 }
 
 @section Scripts {

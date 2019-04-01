@@ -21,7 +21,7 @@ namespace TutorMeNow.Controllers
 
         public AccountController()
         {
-            /*ApplicationDbContext context = */new ApplicationDbContext();
+           context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -128,6 +128,8 @@ namespace TutorMeNow.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            // context = new ApplicationDbContext();
+
             ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");
             return View();
         }
@@ -139,26 +141,17 @@ namespace TutorMeNow.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, UserRole = model.UserRole };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
-                    if (model.UserRoles == "Tutor")
-                    {
-                        return RedirectToAction("CreateTutor", "Tutor");
-                    }
-                    else if (model.UserRoles == "Student")
-                    {
-                        return RedirectToAction("Index", "Users");
-                    }
-
-                    return RedirectToAction("Index", "Users");
+                    //// For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    await this.UserManager.AddToRoleAsync(user.Id, model.UserRole);
+                    return RedirectToAction("Index", "Home");
                 }
-                ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");
+
                 AddErrors(result);
             }
 

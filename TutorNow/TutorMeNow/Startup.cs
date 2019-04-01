@@ -13,11 +13,11 @@ namespace TutorMeNow
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            CreateRolesandUsers();
+            CreateRoles();
 
         }
 
-        private void CreateRolesandUsers()
+        private void CreateRoles()
         {
             ApplicationDbContext context = new ApplicationDbContext();
 
@@ -26,19 +26,21 @@ namespace TutorMeNow
             
             if (!roleManager.RoleExists("Student"))
             {
-                var role = new IdentityRole
-                {
-                    Name = "Student"
-                };
+                var role = new IdentityRole();
+                role.Name = "Student";
+                //{
+                //    Name = "Student"
+                //};
                 roleManager.Create(role);
 
             }
             if (!roleManager.RoleExists("Tutor"))
             {
-                var role = new IdentityRole
-                {
-                    Name = "Tutor"
-                };
+                var role = new IdentityRole();
+                role.Name = "Tutor";
+                //{
+                //    Name = "Tutor"
+                //};
                 roleManager.Create(role);
             }
         }
