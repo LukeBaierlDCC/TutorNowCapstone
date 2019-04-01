@@ -9,6 +9,9 @@ using System.Net;
 using System.Web.Mvc;
 using TutorMeNow.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Xml.Linq;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace TutorMeNow.Controllers
 {
@@ -89,6 +92,32 @@ namespace TutorMeNow.Controllers
             return View(student);
         }
 
+        public ActionResult TutorDetails(int? id)
+        {
+            Rating rating = new Rating();
+
+            
+            using (var client = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }))
+            {
+                var states = Extensions.GetDescription(.Tutor.State);
+                client.BaseAddress = new Uri("Https://maps.googleapis.com/maps/api/geocode/");
+                HttpResponseMessage response = client.GetAsync($"json?address={.Event.Street}+{ComVM.Event.Zip},+{ComVM.Event.City},+{states}&key=AIzaSyBeQMnaAevZy0j1ZGi4CPJQaCLiNRhLTIk").Result;
+                response.EnsureSuccessStatusCode();
+                var result = response.Content.ReadAsStringAsync().Result;
+                RootObject root = JsonConvert.DeserializeObject<RootObject>(result);
+
+                double Latitude = 0.0;
+                double Longitude = 0.0;
+                foreach (var item in root.results)
+                {
+                    Latitude = item.geometry.location.lat;
+                    Longitude = item.geometry.location.lng;
+                    ViewBag.Lat = Latitude.ToString();
+                    ViewBag.Long = Longitude.ToString();
+                }
+            }
+            return View();
+        }
         public ActionResult CreateStudent()
         {
             Student student = new Student();
@@ -131,8 +160,9 @@ namespace TutorMeNow.Controllers
         }
 
         [HttpPost]
-        public ActionResult GiveRating(int id, Tutor ratedTutor)
+        public ActionResult Details(int id, Tutor ratedTutor)
         {
+
             var thisTutor = db.tutors.Where(e => e.TutorId == id).SingleOrDefault();
             if (DateTime.Now > thisTutor.PastSession)
             {
@@ -165,7 +195,7 @@ namespace TutorMeNow.Controllers
         //    return View();
         //}
 
-        public ActionResult Edit(int id/*, FormCollection collection*/)
+        public ActionResult Edit(int id/*, Student student*/)
         {
             try
             {

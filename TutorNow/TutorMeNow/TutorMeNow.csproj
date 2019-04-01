@@ -168,6 +168,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\ChatUser.cs" />
+    <Compile Include="APIKeys.cs" />
+    <Content Include="App_Code\Message.cs" />
+    <Content Include="App_Code\ChatRoom.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -210,6 +214,7 @@
     <Compile Include="Quiz.aspx.designer.cs">
       <DependentUpon>Quiz.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RootObject.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
