@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Web;
 using DescriptionAttribute = System.ComponentModel.DescriptionAttribute;
 
-namespace GroupCapstone
+namespace TutorMeNow
 {
     public static class Extensions
     {

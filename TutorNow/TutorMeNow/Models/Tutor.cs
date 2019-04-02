@@ -22,7 +22,7 @@ namespace TutorMeNow.Models
         [Required]
         public string City { get; set; }
         [Required]
-        public string State { get; set; }
+        public States State { get; set; }
         [Required]
         public int Zip { get; set; }
         [Required]

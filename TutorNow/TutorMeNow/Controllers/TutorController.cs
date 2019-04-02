@@ -29,16 +29,16 @@ namespace TutorMeNow.Controllers
         // GET: Tutor/Details/5
         public ActionResult Details(int id)
         {
-            RatingView ratingView = new RatingView();
+            RatingView RatingView = new RatingView();
 
-            ratingView.Tutor = db.tutors.Find(id);
-            ratingView.Ratings = new List<Rating>();
-            ratingView.Ratings = db.ratings.Where(r => r.TutorId == id).ToList();
+            RatingView.Tutor = db.tutors.Find(id);
+            RatingView.Ratings = new List<Rating>();
+            RatingView.Ratings = db.ratings.Where(r => r.TutorId == id).ToList();
             using (var client = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }))
             {
-                var states = Extensions.GetDescription(ratingView.Tutor.State);
+                var states = Extensions.GetDescription(RatingView.Tutor.State);
                 client.BaseAddress = new Uri("Https://maps.googleapis.com/maps/api/geocode/");
-                HttpResponseMessage response = client.GetAsync($"json?address={ratingView.Tutor.Street}+{ratingView.Tutor.Zip},+{ratingView.Tutor.City},+{states}&key=AIzaSyB5SdAsG2ELNsNtUUtei40YvkumFmMxYZo").Result;
+                HttpResponseMessage response = client.GetAsync($"json?address={RatingView.Tutor.Street}+{RatingView.Tutor.Zip},+{RatingView.Tutor.City},+{states}&key=AIzaSyBBA-VL6jTbTGJNW77AsuCuLRVwXB2wKGo").Result;
                 response.EnsureSuccessStatusCode();
                 var result = response.Content.ReadAsStringAsync().Result;
                 RootObject root = JsonConvert.DeserializeObject<RootObject>(result);
@@ -53,7 +53,7 @@ namespace TutorMeNow.Controllers
                     ViewBag.Long = Longitude.ToString();
                 }
             }
-            return View(ratingView);
+            return View(RatingView);
         }
 
         public ActionResult CreateTutor()

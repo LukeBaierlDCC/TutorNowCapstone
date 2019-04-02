@@ -36,6 +36,7 @@ namespace TutorMeNow.Models
         public DbSet<FieldOfStudy> FieldOfStudies { get; set; }
         public DbSet<Tutor> tutors { get; set; }
         public DbSet<Rating> ratings { get; set; }
+        public DbSet<RatingView> RatingViews { get; set; }
         public DbSet<StudentProgress> studentProgresses { get; set; }
         public DbSet<Subcategory> Subcategory { get; set; }
         

@@ -210,6 +210,14 @@
     <Compile Include="Migrations\201904021935378_thing.Designer.cs">
       <DependentUpon>201904021935378_thing.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904022141087_includeratingviewmodel.cs" />
+    <Compile Include="Migrations\201904022141087_includeratingviewmodel.Designer.cs">
+      <DependentUpon>201904022141087_includeratingviewmodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904022146544_fixedinnewmodel.cs" />
+    <Compile Include="Migrations\201904022146544_fixedinnewmodel.Designer.cs">
+      <DependentUpon>201904022146544_fixedinnewmodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -336,6 +344,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201904021935378_thing.resx">
       <DependentUpon>201904021935378_thing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904022141087_includeratingviewmodel.resx">
+      <DependentUpon>201904022141087_includeratingviewmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904022146544_fixedinnewmodel.resx">
+      <DependentUpon>201904022146544_fixedinnewmodel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
