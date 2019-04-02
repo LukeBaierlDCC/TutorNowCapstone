@@ -13,6 +13,7 @@ using System.Xml.Linq;
 using System.Net.Http;
 using Newtonsoft.Json;
 
+
 namespace TutorMeNow.Controllers
 {
     [Authorize]
@@ -101,35 +102,35 @@ namespace TutorMeNow.Controllers
             return View(student);
         }
 
-        public ActionResult TutorDetails(int? id)
-        {
-            RatingView ratingView = new RatingView();
+        //public ActionResult TutorDetails(int id)
+        //{
+        //    RatingView RatingView = new RatingView();
 
-            ratingView.Tutor = db.tutors.Find(id);
-            ratingView.Ratings = new List<Rating>();
-            ratingView.Ratings = db.ratings.Where(r => r.TutorId == id).ToList();
-            using (var client = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }))
-            {
-                var states = Extensions.GetDescription(ratingView.Tutor.State);
-                client.BaseAddress = new Uri("Https://maps.googleapis.com/maps/api/geocode/");
-                HttpResponseMessage response = client.GetAsync($"json?address={ratingView.Tutor.State}+{ratingView.Tutor.Zip},+{ratingView.Tutor.City},+{states}&key=AIzaSyB5SdAsG2ELNsNtUUtei40YvkumFmMxYZo").Result;
-                response.EnsureSuccessStatusCode();
-                var result = response.Content.ReadAsStringAsync().Result;
-                RootObject root = JsonConvert.DeserializeObject<RootObject>(result);
+        //    RatingView.Tutor = db.tutors.Find(id);
+        //    RatingView.Ratings = new List<Rating>();
+        //    RatingView.Ratings = db.ratings.Where(r => r.TutorId == id).ToList();
+        //    using (var client = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }))
+        //    {
+        //        var states = Extensions.GetDescription(RatingView.Tutor.State);
+        //        client.BaseAddress = new Uri("Https://maps.googleapis.com/maps/api/geocode/");
+        //        HttpResponseMessage response = client.GetAsync($"json?address={RatingView.Tutor.Street}+{RatingView.Tutor.Zip},+{RatingView.Tutor.City},+{states}&key=AIzaSyB5SdAsG2ELNsNtUUtei40YvkumFmMxYZo").Result;
+        //        response.EnsureSuccessStatusCode();
+        //        var result = response.Content.ReadAsStringAsync().Result;
+        //        RootObject root = JsonConvert.DeserializeObject<RootObject>(result);
 
-                double Latitude = 0.0;
-                double Longitude = 0.0;
-                foreach (var item in root.results)
-                {
-                    Latitude = item.geometry.location.lat;
-                    Longitude = item.geometry.location.lng;
-                    ViewBag.Lat = Latitude.ToString();
-                    ViewBag.Long = Longitude.ToString();
-                }
-            }
+        //        double Latitude = 0.0;
+        //        double Longitude = 0.0;
+        //        foreach (var item in root.results)
+        //        {
+        //            Latitude = item.geometry.location.lat;
+        //            Longitude = item.geometry.location.lng;
+        //            ViewBag.Lat = Latitude.ToString();
+        //            ViewBag.Long = Longitude.ToString();
+        //        }
+        //    }
 
-            return View(ratingView);
-        }
+        //    return View(RatingView);
+        //}
         public ActionResult CreateStudent()
         {
             Student student = new Student();
