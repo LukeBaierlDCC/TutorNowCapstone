@@ -215,6 +215,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\RatingView.cs" />
     <Compile Include="Models\States.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentProgress.cs" />
