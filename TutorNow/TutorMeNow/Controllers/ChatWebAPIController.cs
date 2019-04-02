@@ -10,7 +10,7 @@ using System.Web.Routing;
 
 namespace TutorMeNow.Controllers
 {
-    public class ChatWebAPIControllerController : ApiController
+    public class ChatWebAPIController : ApiController
     {
         // GET: api/ChatWebAPIController
         public IEnumerable<string> Get()

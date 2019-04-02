@@ -57,22 +57,22 @@ namespace TutorMeNow.Controllers
         }
 
         //[HttpPost]
-        //public ActionResult CreateNewSubcategory(Subcategory Subcategory)
+        //public ActionResult NewSubcategory(Subcategory Subcategory)
         //{
         //    var CurrentUser = User.Identity.GetUserId();
 
         //    var tutorFound = db.tutors.Where(t => t.ApplicationUserId == CurrentUser).SingleOrDefault();
         //    try
         //    {
-        //        var CreateNewSubcategory = new Subcategory
+        //        var NewSubcategory = new Subcategory
         //        {
 
         //            SubjectId = tutorFound.TutorId,
-        //            SubcatId = tutorFound.TutorId
+        //            SubcategoryId = tutorFound.TutorId
 
         //        };
 
-        //        db.tutors.Add(CreateNewSubcategory);
+        //        db.tutors.Add(NewSubcategory);
         //        db.SaveChanges();
         //        return View("Subcategory");
         //    }

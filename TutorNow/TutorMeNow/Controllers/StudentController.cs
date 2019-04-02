@@ -18,21 +18,21 @@ namespace TutorMeNow.Controllers
     [Authorize]
     public class StudentController : Controller
     {
-        ApplicationDbContext context;
+        ApplicationDbContext db;
         public StudentController()
         {
-            context = new ApplicationDbContext();
+            db = new ApplicationDbContext();
         }
 
         public ActionResult StudentHome()
         {
             var userLoggedIn = User.Identity.GetUserId();
-            var currentStudent = context.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
+            var currentStudent = db.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
             var currentDate = DateTime.Now;
             int tutorAvailability = GetWeekNumber(currentDate);
             //var currentZip = context.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
-            var currentSubject = context.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
-            var tutorsInZip = context.tutors.Where(t => t.Zip == currentStudent.Zip).ToList();
+            var currentSubject = db.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
+            var tutorsInZip = db.tutors.Where(t => t.Zip == currentStudent.Zip).ToList();
 
             List<Models.Tutor> tutors = new List<Models.Tutor> { };
 
@@ -67,15 +67,15 @@ namespace TutorMeNow.Controllers
         {
 
             var CurrentUser = User.Identity.GetUserId();
-            var studentFound = context.students.Where(g => g.ApplicationUserId == CurrentUser).SingleOrDefault();
+            var studentFound = db.students.Where(g => g.ApplicationUserId == CurrentUser).SingleOrDefault();
 
-            var filteredTutors = context.tutors.Where(t => t.SubjectName.ToString() == id && t.Zip == studentFound.Zip).ToList();
+            var filteredTutors = db.tutors.Where(t => t.SubjectName.ToString() == id && t.Zip == studentFound.Zip).ToList();
             return View(filteredTutors);
         }
 
         public ActionResult FilterHighRating()
         {
-            var allTutors = context.tutors.ToList();
+            var allTutors = db.tutors.ToList();
             var newList = allTutors.OrderByDescending(t => t.AvgRating).ToList();
             return View(newList);
         }
@@ -93,7 +93,7 @@ namespace TutorMeNow.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = context.students.Find(id);
+            Student student = db.students.Find(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -119,9 +119,9 @@ namespace TutorMeNow.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    context.students.Add(student);
+                    db.students.Add(student);
                     student.ApplicationUserId = User.Identity.GetUserId();
-                    context.SaveChanges();
+                    db.SaveChanges();
                     return RedirectToAction("StudentHome");
                 }
 
@@ -137,7 +137,7 @@ namespace TutorMeNow.Controllers
         {
             try
             {
-                var ratedTutor = context.tutors.Where(t => t.TutorId == id).SingleOrDefault();
+                var ratedTutor = db.tutors.Where(t => t.TutorId == id).SingleOrDefault();
                 return View(ratedTutor);
             }
             catch
@@ -147,18 +147,18 @@ namespace TutorMeNow.Controllers
         }
 
         [HttpPost]
-        public ActionResult Details(int id, Tutor ratedTutor)
+        public ActionResult GiveRating(int id, Tutor ratedTutor)
         {
 
-            var thisTutor = context.tutors.Where(e => e.TutorId == id).SingleOrDefault();
+            var thisTutor = db.tutors.Where(e => e.TutorId == id).SingleOrDefault();
             if (DateTime.Now > thisTutor.PastSession)
             {
                 Rating rating = new Rating();
                 rating.AvgRating = ratedTutor.AvgRating;
                 rating.TutorId = thisTutor.TutorId;
-                context.ratings.Add(rating);
-                context.SaveChanges();
-                var tutorsRatings = context.ratings.Where(r => r.TutorId == id).ToList();
+                db.ratings.Add(rating);
+                db.SaveChanges();
+                var tutorsRatings = db.ratings.Where(r => r.TutorId == id).ToList();
                 List<int> selectedRatings = new List<int>();
                 foreach (var filteredRating in tutorsRatings)
                 {
@@ -171,7 +171,7 @@ namespace TutorMeNow.Controllers
 
                 ratedTutor.AvgRating = thisTutor.AvgRating;
 
-                context.SaveChanges();
+                db.SaveChanges();
 
             }
             return RedirectToAction("StudentHome");
@@ -186,7 +186,7 @@ namespace TutorMeNow.Controllers
         {
             try
             {
-                var editedStudent = context.students.Where(s => s.StudentId == id).SingleOrDefault();
+                var editedStudent = db.students.Where(s => s.StudentId == id).SingleOrDefault();
 
                 return View(editedStudent);
             }
@@ -196,26 +196,26 @@ namespace TutorMeNow.Controllers
             }
         }
 
-        //[HttpPost]
-        //public ActionResult Edit(Student student)
-        //{
-        //    try
-        //    {
-        //        Student thisStudent = context.students.Find.Id;
+        [HttpPost]
+        public ActionResult Edit(int id, Student student)
+        {
+            try
+            {
+                Student thisStudent = db.students.Find(id);
 
-        //        thisStudent.FirstName = student.FirstName;
-        //        thisStudent.LastName = student.LastName;
-        //        thisStudent.Zip = student.Zip;
+                thisStudent.FirstName = student.FirstName;
+                thisStudent.LastName = student.LastName;
+                thisStudent.Zip = student.Zip;
 
-        //        context.SaveChanges();
+                db.SaveChanges();
 
-        //        return RedirectToAction("StudentHome");
-        //    }
-        //    catch
-        //    {
-        //        return View(student);
-        //    }
-        //}
+                return RedirectToAction("StudentHome");
+            }
+            catch
+            {
+                return View(student);
+            }
+        }
 
         public ActionResult Delete(int id)
         {

@@ -32,7 +32,8 @@ namespace TutorMeNow.Models
             return new ApplicationDbContext();
         }
         public DbSet<Student> students { get; set; }
-        public DbSet<Subject> subjects { get; set; }
+        public DbSet<SubjectField> subjectFields { get; set; }
+        public DbSet<FieldOfStudy> FieldOfStudies { get; set; }
         public DbSet<Tutor> tutors { get; set; }
         public DbSet<Rating> ratings { get; set; }
         public DbSet<StudentProgress> studentProgresses { get; set; }

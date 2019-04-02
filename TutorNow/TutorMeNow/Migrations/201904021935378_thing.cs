@@ -3,10 +3,22 @@ namespace TutorMeNow.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initialmigrate : DbMigration
+    public partial class thing : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.FieldOfStudies",
+                c => new
+                    {
+                        SubjectId = c.Int(nullable: false, identity: true),
+                        Subject = c.String(),
+                        English = c.String(),
+                        Math = c.String(),
+                        Science = c.String(),
+                    })
+                .PrimaryKey(t => t.SubjectId);
+            
             CreateTable(
                 "dbo.Ratings",
                 c => new
@@ -32,16 +44,19 @@ namespace TutorMeNow.Migrations
                         Gender = c.Int(),
                         AvgRating = c.Int(nullable: false),
                         PastSession = c.DateTime(nullable: false),
+                        TutorAvailability = c.DateTime(nullable: false),
                         SubjectId = c.Int(nullable: false),
                         SubcategoryId = c.Int(nullable: false),
+                        SubcatId = c.Int(nullable: false),
+                        SubjectName = c.Int(nullable: false),
                         ApplicationUserId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.TutorId)
                 .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId)
                 .ForeignKey("dbo.Subcategories", t => t.SubcategoryId, cascadeDelete: true)
-                .ForeignKey("dbo.Subjects", t => t.SubjectId, cascadeDelete: true)
-                .Index(t => t.SubjectId)
+                .ForeignKey("dbo.Tutors", t => t.SubcatId)
                 .Index(t => t.SubcategoryId)
+                .Index(t => t.SubcatId)
                 .Index(t => t.ApplicationUserId);
             
             CreateTable(
@@ -49,6 +64,7 @@ namespace TutorMeNow.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        UserRole = c.String(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -109,26 +125,11 @@ namespace TutorMeNow.Migrations
                         SubcategoryId = c.Int(nullable: false, identity: true),
                         SubjectId = c.Int(nullable: false),
                         Name = c.String(),
-                        English = c.String(),
-                        Math = c.String(),
-                        Science = c.String(),
                         Subcategory_SubcategoryId = c.Int(),
                     })
                 .PrimaryKey(t => t.SubcategoryId)
                 .ForeignKey("dbo.Subcategories", t => t.Subcategory_SubcategoryId)
                 .Index(t => t.Subcategory_SubcategoryId);
-            
-            CreateTable(
-                "dbo.Subjects",
-                c => new
-                    {
-                        SubjectId = c.Int(nullable: false, identity: true),
-                        SubjectName = c.String(nullable: false),
-                        Student_StudentId = c.Int(),
-                    })
-                .PrimaryKey(t => t.SubjectId)
-                .ForeignKey("dbo.Students", t => t.Student_StudentId)
-                .Index(t => t.Student_StudentId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -164,37 +165,40 @@ namespace TutorMeNow.Migrations
                         Zip = c.Int(nullable: false),
                         Gender = c.Int(),
                         SubjectId = c.Int(nullable: false),
+                        SubjectName = c.Int(nullable: false),
                         ApplicationUserId = c.String(maxLength: 128),
-                        SubjectName_SubjectId = c.Int(),
                     })
                 .PrimaryKey(t => t.StudentId)
                 .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId)
-                .ForeignKey("dbo.Subjects", t => t.SubjectName_SubjectId)
-                .Index(t => t.ApplicationUserId)
-                .Index(t => t.SubjectName_SubjectId);
+                .Index(t => t.ApplicationUserId);
+            
+            CreateTable(
+                "dbo.SubjectFields",
+                c => new
+                    {
+                        SubjectId = c.Int(nullable: false, identity: true),
+                        SubjectName = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.SubjectId);
             
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.StudentProgresses", "StudentID", "dbo.Students");
-            DropForeignKey("dbo.Students", "SubjectName_SubjectId", "dbo.Subjects");
-            DropForeignKey("dbo.Subjects", "Student_StudentId", "dbo.Students");
             DropForeignKey("dbo.Students", "ApplicationUserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Ratings", "TutorId", "dbo.Tutors");
-            DropForeignKey("dbo.Tutors", "SubjectId", "dbo.Subjects");
+            DropForeignKey("dbo.Tutors", "SubcatId", "dbo.Tutors");
             DropForeignKey("dbo.Tutors", "SubcategoryId", "dbo.Subcategories");
             DropForeignKey("dbo.Subcategories", "Subcategory_SubcategoryId", "dbo.Subcategories");
             DropForeignKey("dbo.Tutors", "ApplicationUserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropIndex("dbo.Students", new[] { "SubjectName_SubjectId" });
             DropIndex("dbo.Students", new[] { "ApplicationUserId" });
             DropIndex("dbo.StudentProgresses", new[] { "StudentID" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Subjects", new[] { "Student_StudentId" });
             DropIndex("dbo.Subcategories", new[] { "Subcategory_SubcategoryId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
@@ -202,13 +206,13 @@ namespace TutorMeNow.Migrations
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Tutors", new[] { "ApplicationUserId" });
+            DropIndex("dbo.Tutors", new[] { "SubcatId" });
             DropIndex("dbo.Tutors", new[] { "SubcategoryId" });
-            DropIndex("dbo.Tutors", new[] { "SubjectId" });
             DropIndex("dbo.Ratings", new[] { "TutorId" });
+            DropTable("dbo.SubjectFields");
             DropTable("dbo.Students");
             DropTable("dbo.StudentProgresses");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Subjects");
             DropTable("dbo.Subcategories");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
@@ -216,6 +220,7 @@ namespace TutorMeNow.Migrations
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.Tutors");
             DropTable("dbo.Ratings");
+            DropTable("dbo.FieldOfStudies");
         }
     }
 }

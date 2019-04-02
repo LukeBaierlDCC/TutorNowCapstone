@@ -13,20 +13,13 @@ namespace TutorMeNow.Models
         public int SubcategoryId { get; set; }
         public int SubjectId { get; set; }
         public string Name { get; set; }
-        public string English { get; set; }
-        public string Math { get; set; }
-        public string Science { get; set; }
         public virtual ICollection<Subcategory> GetSubcategory { get; set; }
     }
 
-    public enum Subjects
+    public class AccessClass
     {
-        English,
-        Math,
-        Science,
-        Other
+        public Subject Subject { get; set; }
     }
-
     public enum EnglishSubcategory
     {
         ArgumentativeWriting,
@@ -58,8 +51,4 @@ namespace TutorMeNow.Models
         Physics
     }
 
-    public class AccessClass
-    {
-        public Subject Subject { get; set; }
-    }
 }

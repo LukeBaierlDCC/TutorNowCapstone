@@ -26,13 +26,15 @@ namespace TutorMeNow.Models
         public DateTime PastSession { get; set; }
         [Required]
         public DateTime TutorAvailability { get; set; }
-        [Required]
-        [Display(Name = "Subject")]
+
         public int SubjectId { get; set; }
         [ForeignKey("Subcategory")]
         public int SubcategoryId { get; set; }
         public Subcategory Subcategory { get; set; }
 
+        public int SubcatId { get; set; }
+        [ForeignKey("SubcatId")]
+        public virtual Tutor Tutors { get; set; }
         public virtual Subject SubjectName { get; set; }
         [ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }
