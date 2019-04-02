@@ -17,10 +17,17 @@ namespace TutorMeNow.Models
         [Display(Name = "Last Name")]
         [Required]
         public string LastName { get; set; }
+        [Required]
+        public string Street { get; set; }
+        [Required]
         public string City { get; set; }
+        [Required]
         public string State { get; set; }
+        [Required]
         public int Zip { get; set; }
+        [Required]
         public Gender? Gender { get; set; }
+        [Required]
         public int AvgRating { get; set; }
         [Required]
         public DateTime PastSession { get; set; }

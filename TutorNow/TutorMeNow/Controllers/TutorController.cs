@@ -1,9 +1,13 @@
 ﻿using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Linq;
 using TutorMeNow.Models;
 
 namespace TutorMeNow.Controllers
@@ -23,10 +27,34 @@ namespace TutorMeNow.Controllers
         }
 
         // GET: Tutor/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+        //public ActionResult Details(int id)
+        //{
+        //    RatingView ratingView = new RatingView();
+
+        //    ratingView.Tutor = db.tutors.Find(id);
+        //    ratingView.Ratings = new List<Rating>();
+        //    ratingView.Ratings = db.ratings.Where(r => r.TutorId == id).ToList();
+        //    using (var client = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }))
+        //    {
+        //        var states = Extensions.GetDescription(ratingView.Tutor.State);
+        //        client.BaseAddress = new Uri("Https://maps.googleapis.com/maps/api/geocode/");
+        //        HttpResponseMessage response = client.GetAsync($"json?address={ratingView.Tutor.Street}+{ratingView.Tutor.Zip},+{ratingView.Tutor.City},+{states}&key=AIzaSyB5SdAsG2ELNsNtUUtei40YvkumFmMxYZo").Result;
+        //        response.EnsureSuccessStatusCode();
+        //        var result = response.Content.ReadAsStringAsync().Result;
+        //        RootObject root = JsonConvert.DeserializeObject<RootObject>(result);
+
+        //        double Latitude = 0.0;
+        //        double Longitude = 0.0;
+        //        foreach (var item in root.results)
+        //        {
+        //            Latitude = item.geometry.location.lat;
+        //            Longitude = item.geometry.location.lng;
+        //            ViewBag.Lat = Latitude.ToString();
+        //            ViewBag.Long = Longitude.ToString();
+        //        }
+        //    }
+        //    return View(ratingView);
+        //}
 
         public ActionResult CreateTutor()
         {
