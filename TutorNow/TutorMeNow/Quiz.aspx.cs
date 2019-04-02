@@ -13,5 +13,15 @@ namespace TutorMeNow
         {
 
         }
+
+        protected void RadioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void RadioButtonA_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

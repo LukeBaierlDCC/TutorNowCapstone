@@ -31,7 +31,7 @@ namespace TutorMeNow.Models
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
     }
-    public class Subject
+    public class SubjectField
     {
         //I should have created a separate class for this instead of adding it here. Followed this video a little too closely: https://www.youtube.com/watch?v=RFQlwIvvS-M&t=511s
         [Key]

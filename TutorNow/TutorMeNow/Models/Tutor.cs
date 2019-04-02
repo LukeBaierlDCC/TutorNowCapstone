@@ -25,6 +25,8 @@ namespace TutorMeNow.Models
         [Required]
         public DateTime PastSession { get; set; }
         [Required]
+        public DateTime TutorAvailability { get; set; }
+        [Required]
         [Display(Name = "Subject")]
         public int SubjectId { get; set; }
         [ForeignKey("Subcategory")]

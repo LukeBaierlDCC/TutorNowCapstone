@@ -23,7 +23,8 @@ namespace TutorMeNow.Models
     {
         English,
         Math,
-        Science
+        Science,
+        Other
     }
 
     public enum EnglishSubcategory

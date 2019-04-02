@@ -10,13 +10,15 @@ namespace TutorMeNow
 {
     public partial class Startup
     {
+
         public void Configuration(IAppBuilder app)
         {
+            app.MapSignalR();
             ConfigureAuth(app);
             CreateRoles();
 
         }
-
+        
         private void CreateRoles()
         {
             ApplicationDbContext context = new ApplicationDbContext();
@@ -28,9 +30,7 @@ namespace TutorMeNow
             {
                 var role = new IdentityRole();
                 role.Name = "Student";
-                //{
-                //    Name = "Student"
-                //};
+
                 roleManager.Create(role);
 
             }
@@ -38,9 +38,7 @@ namespace TutorMeNow
             {
                 var role = new IdentityRole();
                 role.Name = "Tutor";
-                //{
-                //    Name = "Tutor"
-                //};
+
                 roleManager.Create(role);
             }
         }

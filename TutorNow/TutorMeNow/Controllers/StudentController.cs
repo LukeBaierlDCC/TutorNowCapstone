@@ -15,47 +15,49 @@ using Newtonsoft.Json;
 
 namespace TutorMeNow.Controllers
 {
+    [Authorize]
     public class StudentController : Controller
     {
-        //ApplicationDbContext db = new ApplicationDbContext();
-        private ApplicationDbContext db;
+        ApplicationDbContext context;
         public StudentController()
         {
-            db = new ApplicationDbContext();
+            context = new ApplicationDbContext();
         }
 
-        //public ActionResult StudentHome()
-        //{
-        //    var userLoggedIn = User.Identity.GetUserId();
-        //    var currentStudent = db.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
-        //    var currentZip = db.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
-        //    var currentSubject = db.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
-        //    var tutorsInZip = db.tutors.Where(t => t.Zip == currentStudent.Zip).ToList();
+        public ActionResult StudentHome()
+        {
+            var userLoggedIn = User.Identity.GetUserId();
+            var currentStudent = context.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
+            var currentDate = DateTime.Now;
+            int tutorAvailability = GetWeekNumber(currentDate);
+            //var currentZip = context.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
+            var currentSubject = context.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
+            var tutorsInZip = context.tutors.Where(t => t.Zip == currentStudent.Zip).ToList();
 
-        //    List<Models.Tutor> tutors = new List<Models.Tutor> { };
+            List<Models.Tutor> tutors = new List<Models.Tutor> { };
 
-        //    foreach (var foundTutor in tutorsInZip)
-        //    {
-        //        //int currentZip = foundTutor.Zip;
-        //        if (tutorsInZip == currentZip)
-        //        {
-        //            tutorsInZip.Add(foundTutor);
-        //        }
-        //        {
-        //            tutors.Add(foundTutor);
-        //        }
-        //    }
-        //    var typeList = Enum.GetValues(typeof(Subjects))
-        //    .Cast<Subjects>()
-        //    .Select(t => new AccessClass
-        //    {
-        //        Subject = ((Subjects)t),
-        //    });
+            foreach (var foundTutor in tutorsInZip)
+            {
+                int tutorHoot = GetWeekNumber(foundTutor.TutorAvailability);
+                if (tutorHoot == tutorAvailability)
+                //{
+                //    tutorsInZip.Add(foundTutor);
+                //}
+                {
+                    tutors.Add(foundTutor);
+                }
+            }
+            var typeList = Enum.GetValues(typeof(Subject))
+            .Cast<Subject>()
+            .Select(t => new AccessClass
+            {
+                Subject = ((Subject)t),
+            });
 
-        //    ViewBag.ListData = typeList;
+            ViewBag.ListData = typeList;
 
-        //    return View(tutorsInZip);
-        //}
+            return View(tutorsInZip);
+        }
         public ActionResult Index()
         {
             return View();
@@ -65,17 +67,24 @@ namespace TutorMeNow.Controllers
         {
 
             var CurrentUser = User.Identity.GetUserId();
-            var studentFound = db.students.Where(g => g.ApplicationUserId == CurrentUser).SingleOrDefault();
+            var studentFound = context.students.Where(g => g.ApplicationUserId == CurrentUser).SingleOrDefault();
 
-            var filteredTutors = db.tutors.Where(t => t.SubjectName.ToString() == id && t.Zip == studentFound.Zip).ToList();
+            var filteredTutors = context.tutors.Where(t => t.SubjectName.ToString() == id && t.Zip == studentFound.Zip).ToList();
             return View(filteredTutors);
         }
 
         public ActionResult FilterHighRating()
         {
-            var allTutors = db.tutors.ToList();
+            var allTutors = context.tutors.ToList();
             var newList = allTutors.OrderByDescending(t => t.AvgRating).ToList();
             return View(newList);
+        }
+
+        public int GetWeekNumber(DateTime date)
+        {
+            CultureInfo currentCulture = CultureInfo.CurrentCulture;
+            int weekNumber = currentCulture.Calendar.GetWeekOfYear(date, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Sunday);
+            return weekNumber;
         }
 
         public ActionResult Details(int? id)
@@ -84,7 +93,7 @@ namespace TutorMeNow.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.students.Find(id);
+            Student student = context.students.Find(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -94,28 +103,6 @@ namespace TutorMeNow.Controllers
 
         public ActionResult TutorDetails(int? id)
         {
-            Rating rating = new Rating();
-
-            
-            using (var client = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }))
-            {
-                var states = Extensions.GetDescription(.Tutor.State);
-                client.BaseAddress = new Uri("Https://maps.googleapis.com/maps/api/geocode/");
-                HttpResponseMessage response = client.GetAsync($"json?address={.Event.Street}+{ComVM.Event.Zip},+{ComVM.Event.City},+{states}&key=AIzaSyBeQMnaAevZy0j1ZGi4CPJQaCLiNRhLTIk").Result;
-                response.EnsureSuccessStatusCode();
-                var result = response.Content.ReadAsStringAsync().Result;
-                RootObject root = JsonConvert.DeserializeObject<RootObject>(result);
-
-                double Latitude = 0.0;
-                double Longitude = 0.0;
-                foreach (var item in root.results)
-                {
-                    Latitude = item.geometry.location.lat;
-                    Longitude = item.geometry.location.lng;
-                    ViewBag.Lat = Latitude.ToString();
-                    ViewBag.Long = Longitude.ToString();
-                }
-            }
             return View();
         }
         public ActionResult CreateStudent()
@@ -132,9 +119,9 @@ namespace TutorMeNow.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    db.students.Add(student);
+                    context.students.Add(student);
                     student.ApplicationUserId = User.Identity.GetUserId();
-                    db.SaveChanges();
+                    context.SaveChanges();
                     return RedirectToAction("StudentHome");
                 }
 
@@ -150,7 +137,7 @@ namespace TutorMeNow.Controllers
         {
             try
             {
-                var ratedTutor = db.tutors.Where(t => t.TutorId == id).SingleOrDefault();
+                var ratedTutor = context.tutors.Where(t => t.TutorId == id).SingleOrDefault();
                 return View(ratedTutor);
             }
             catch
@@ -163,15 +150,15 @@ namespace TutorMeNow.Controllers
         public ActionResult Details(int id, Tutor ratedTutor)
         {
 
-            var thisTutor = db.tutors.Where(e => e.TutorId == id).SingleOrDefault();
+            var thisTutor = context.tutors.Where(e => e.TutorId == id).SingleOrDefault();
             if (DateTime.Now > thisTutor.PastSession)
             {
                 Rating rating = new Rating();
                 rating.AvgRating = ratedTutor.AvgRating;
                 rating.TutorId = thisTutor.TutorId;
-                db.ratings.Add(rating);
-                db.SaveChanges();
-                var tutorsRatings = db.ratings.Where(r => r.TutorId == id).ToList();
+                context.ratings.Add(rating);
+                context.SaveChanges();
+                var tutorsRatings = context.ratings.Where(r => r.TutorId == id).ToList();
                 List<int> selectedRatings = new List<int>();
                 foreach (var filteredRating in tutorsRatings)
                 {
@@ -184,7 +171,7 @@ namespace TutorMeNow.Controllers
 
                 ratedTutor.AvgRating = thisTutor.AvgRating;
 
-                db.SaveChanges();
+                context.SaveChanges();
 
             }
             return RedirectToAction("StudentHome");
@@ -199,7 +186,7 @@ namespace TutorMeNow.Controllers
         {
             try
             {
-                var editedStudent = db.students.Where(s => s.StudentId == id).SingleOrDefault();
+                var editedStudent = context.students.Where(s => s.StudentId == id).SingleOrDefault();
 
                 return View(editedStudent);
             }
@@ -214,13 +201,13 @@ namespace TutorMeNow.Controllers
         //{
         //    try
         //    {
-        //        Student thisStudent = db.students.Find.Id;
+        //        Student thisStudent = context.students.Find.Id;
 
         //        thisStudent.FirstName = student.FirstName;
         //        thisStudent.LastName = student.LastName;
         //        thisStudent.Zip = student.Zip;
 
-        //        db.SaveChanges();
+        //        context.SaveChanges();
 
         //        return RedirectToAction("StudentHome");
         //    }

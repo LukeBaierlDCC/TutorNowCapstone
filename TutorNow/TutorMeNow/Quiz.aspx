@@ -12,13 +12,13 @@
             <table align="center">
                 <tr>
                     <td>
-                        <asp:Label ID="Label1" runat="server" Text="What is your favorite color?"></asp:Label><br />
+                        <asp:Label ID="Label1" runat="server" Text="What is 5 + 1(6 - 3)?"></asp:Label><br />
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <asp:RadioButton GroupName="Quiz" ID="RadioButton1" runat="server" /><br />
-                        <asp:RadioButton GroupName="Quiz" ID="RadioButton2" runat="server" /><br />
+                        <asp:RadioButton GroupName="Quiz" ID="RadioButton2" runat="server" OnCheckedChanged="RadioButton2_CheckedChanged" /><br />
                         <asp:RadioButton GroupName="Quiz" ID="RadioButton3" runat="server" /><br />
                         <asp:RadioButton GroupName="Quiz" ID="RadioButton4" runat="server" /><br />
                     </td>
@@ -31,7 +31,7 @@
                 </tr>
             </table>
 
-            <asp:RadioButton ID="RadioButtonA" runat="server" />
+            <asp:RadioButton ID="RadioButtonA" runat="server" OnCheckedChanged="RadioButtonA_CheckedChanged" />
 
 
         </div>
