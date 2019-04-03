@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TutorMeNow.Models;
 
 namespace TutorMeNow.Controllers
 {
     public class FieldOfStudyController : Controller
     {
+        private ApplicationDbContext _context;
+        public FieldOfStudyController()
+        {
+            _context = new ApplicationDbContext();
+        }
         // GET: FieldOfStudy
         public ActionResult Index()
         {
