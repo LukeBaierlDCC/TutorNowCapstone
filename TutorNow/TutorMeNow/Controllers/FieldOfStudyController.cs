@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,10 +10,10 @@ namespace TutorMeNow.Controllers
 {
     public class FieldOfStudyController : Controller
     {
-        private ApplicationDbContext _context;
+        ApplicationDbContext db;
         public FieldOfStudyController()
         {
-            _context = new ApplicationDbContext();
+            db = new ApplicationDbContext();
         }
         // GET: FieldOfStudy
         public ActionResult Index()
@@ -29,18 +30,40 @@ namespace TutorMeNow.Controllers
         // GET: FieldOfStudy/Create
         public ActionResult Create()
         {
-            return View();
+            Subcategory subcategory = new Subcategory();
+            return View(subcategory);
         }
 
         // POST: FieldOfStudy/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Math,English,Science")] Subcategory subcategory)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (ModelState.IsValid)
+                {
+                    db.Subcategory.Add(subcategory);
+                    
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-                return RedirectToAction("Index");
+            }
+            catch
+            {
+                
+            }
+            return View(subcategory);
+        }
+
+        // GET: FieldOfStudy/Edit/5
+        public ActionResult Edit(int id)
+        {
+            try
+            {
+                var editedFieldOfStudy = db.tutors.Where(t => t.TutorId == id).SingleOrDefault();
+                return View(editedFieldOfStudy);
             }
             catch
             {
@@ -48,19 +71,13 @@ namespace TutorMeNow.Controllers
             }
         }
 
-        // GET: FieldOfStudy/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
         // POST: FieldOfStudy/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, FieldOfStudy fieldOfStudy)
         {
             try
             {
-                // TODO: Add update logic here
+                
 
                 return RedirectToAction("Index");
             }

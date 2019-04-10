@@ -26,6 +26,10 @@ namespace TutorMeNow.Models
         [Display(Name = "Subject")]
         public int SubjectId { get; set; }
         public virtual Subject SubjectName { get; set; }
+        [Required]
+        public DateTime PastSession { get; set; }
+        [Required]
+        public int AvgRating { get; set; }
         public virtual ICollection<Subject> Subject { get; set; }
         [ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }

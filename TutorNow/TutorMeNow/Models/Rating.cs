@@ -16,5 +16,8 @@ namespace TutorMeNow
         public int TutorId { get; set; }
         [ForeignKey("TutorId")]
         public virtual Tutor RatedTutor { get; set; }
+        public int StudentId { get; set; }
+        [ForeignKey("StudentId")]
+        public virtual Student RatedStudent { get; set; }
     }
 }

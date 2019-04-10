@@ -184,9 +184,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\ChatUser.cs" />
     <Compile Include="APIKeys.cs" />
-    <Content Include="App_Code\Message.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -222,6 +220,10 @@
     <Compile Include="Migrations\201904030114413_completedmodels.cs" />
     <Compile Include="Migrations\201904030114413_completedmodels.Designer.cs">
       <DependentUpon>201904030114413_completedmodels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904100148488_includingstuff.cs" />
+    <Compile Include="Migrations\201904100148488_includingstuff.Designer.cs">
+      <DependentUpon>201904100148488_includingstuff.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -361,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904030114413_completedmodels.resx">
       <DependentUpon>201904030114413_completedmodels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904100148488_includingstuff.resx">
+      <DependentUpon>201904100148488_includingstuff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
