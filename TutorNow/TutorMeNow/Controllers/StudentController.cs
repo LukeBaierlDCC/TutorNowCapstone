@@ -154,7 +154,7 @@ namespace TutorMeNow.Controllers
             }
             catch
             {
-                
+                return View();
             }
             return View(student);
         }

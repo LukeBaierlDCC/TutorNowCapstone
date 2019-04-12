@@ -205,13 +205,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904021935378_thing.cs" />
-    <Compile Include="Migrations\201904021935378_thing.Designer.cs">
-      <DependentUpon>201904021935378_thing.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904022141087_includeratingviewmodel.cs" />
-    <Compile Include="Migrations\201904022141087_includeratingviewmodel.Designer.cs">
-      <DependentUpon>201904022141087_includeratingviewmodel.cs</DependentUpon>
+    <Compile Include="Migrations\201904021935378_init.cs" />
+    <Compile Include="Migrations\201904021935378_init.Designer.cs">
+      <DependentUpon>201904021935378_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201904022146544_fixedinnewmodel.cs" />
     <Compile Include="Migrations\201904022146544_fixedinnewmodel.Designer.cs">
@@ -221,9 +217,17 @@
     <Compile Include="Migrations\201904030114413_completedmodels.Designer.cs">
       <DependentUpon>201904030114413_completedmodels.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904100148488_includingstuff.cs" />
-    <Compile Include="Migrations\201904100148488_includingstuff.Designer.cs">
-      <DependentUpon>201904100148488_includingstuff.cs</DependentUpon>
+    <Compile Include="Migrations\201904100148488_foreignkeyrelations.cs" />
+    <Compile Include="Migrations\201904100148488_foreignkeyrelations.Designer.cs">
+      <DependentUpon>201904100148488_foreignkeyrelations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904111926229_SubcategoriesSubjectLink.cs" />
+    <Compile Include="Migrations\201904111926229_SubcategoriesSubjectLink.Designer.cs">
+      <DependentUpon>201904111926229_SubcategoriesSubjectLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904122133417_bamalama.cs" />
+    <Compile Include="Migrations\201904122133417_bamalama.Designer.cs">
+      <DependentUpon>201904122133417_bamalama.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -352,11 +356,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904021935378_thing.resx">
-      <DependentUpon>201904021935378_thing.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904022141087_includeratingviewmodel.resx">
-      <DependentUpon>201904022141087_includeratingviewmodel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904021935378_init.resx">
+      <DependentUpon>201904021935378_init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904022146544_fixedinnewmodel.resx">
       <DependentUpon>201904022146544_fixedinnewmodel.cs</DependentUpon>
@@ -364,8 +365,14 @@
     <EmbeddedResource Include="Migrations\201904030114413_completedmodels.resx">
       <DependentUpon>201904030114413_completedmodels.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904100148488_includingstuff.resx">
-      <DependentUpon>201904100148488_includingstuff.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904100148488_foreignkeyrelations.resx">
+      <DependentUpon>201904100148488_foreignkeyrelations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904111926229_SubcategoriesSubjectLink.resx">
+      <DependentUpon>201904111926229_SubcategoriesSubjectLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904122133417_bamalama.resx">
+      <DependentUpon>201904122133417_bamalama.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

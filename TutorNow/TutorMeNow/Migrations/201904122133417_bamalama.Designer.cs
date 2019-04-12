@@ -7,13 +7,13 @@ namespace TutorMeNow.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class includeratingviewmodel : IMigrationMetadata
+    public sealed partial class bamalama : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(includeratingviewmodel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(bamalama));
         
         string IMigrationMetadata.Id
         {
-            get { return "201904022141087_includeratingviewmodel"; }
+            get { return "201904122133417_bamalama"; }
         }
         
         string IMigrationMetadata.Source

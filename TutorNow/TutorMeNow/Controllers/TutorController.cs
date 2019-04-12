@@ -109,51 +109,7 @@ namespace TutorMeNow.Controllers
                 return View("Subcategory");
             }
         }
-
-        public ActionResult GiveRating(int id)
-        {
-            try
-            {
-                var ratedStudent = db.students.Where(s => s.StudentId == id).SingleOrDefault();
-                return View(ratedStudent);
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        [HttpPost]
-        public ActionResult GiveRating(int id, Student ratedStudent)
-        {
-
-            var thisStudent = db.students.Where(e => e.StudentId == id).SingleOrDefault();
-            if (DateTime.Now > thisStudent.PastSession)
-            {
-                Rating rating = new Rating();
-                rating.AvgRating = ratedStudent.AvgRating;
-                rating.StudentId = thisStudent.StudentId;
-                db.ratings.Add(rating);
-                db.SaveChanges();
-                var studentsRatings = db.ratings.Where(r => r.StudentId == id).ToList();
-                List<int> selectedRatings = new List<int>();
-                foreach (var filteredRating in studentsRatings)
-                {
-                    selectedRatings.Add(filteredRating.AvgRating);
-                }
-                int sum = selectedRatings.Sum();
-                int avgRating = sum / selectedRatings.Count;
-                thisStudent.AvgRating = avgRating;
-
-
-                ratedStudent.AvgRating = thisStudent.AvgRating;
-
-                db.SaveChanges();
-
-            }
-            return RedirectToAction("TutorHome");
-        }
-
+                
         public ActionResult EditTutor(int id)
         {
             var editedTutor = db.tutors.Where(t => t.TutorId == id).SingleOrDefault();

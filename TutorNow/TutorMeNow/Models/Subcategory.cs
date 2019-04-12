@@ -10,8 +10,9 @@ namespace TutorMeNow.Models
     public class Subcategory
     {
         [Key]
-        public int SubcategoryId { get; set; }
         public int SubjectId { get; set; }
+        public int SubcategoryId { get; set; }
+        public string FieldOfStudy { get; set; }
         public string Name { get; set; }
         public virtual ICollection<Subcategory> GetSubcategory { get; set; }
     }
@@ -30,7 +31,6 @@ namespace TutorMeNow.Models
         PublicSpeaking
 
     }
-
     public enum MathSubcategory
     {
         Arithmetic,
@@ -43,7 +43,6 @@ namespace TutorMeNow.Models
         Statistics,
         Trigonometry
     }
-
     public enum ScienceSubcategory
     {
         Biology,

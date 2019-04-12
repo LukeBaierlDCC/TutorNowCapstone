@@ -17,11 +17,11 @@ namespace TutorMeNow.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        ApplicationDbContext context;
+        ApplicationDbContext _context;
 
         public AccountController()
         {
-           context = new ApplicationDbContext();
+           _context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -130,7 +130,7 @@ namespace TutorMeNow.Controllers
         {
             // context = new ApplicationDbContext();
 
-            ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");
+            ViewBag.Name = new SelectList(_context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");
             return View();
         }
 
