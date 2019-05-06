@@ -233,6 +233,10 @@
     <Compile Include="Migrations\201905062228459_fixingstudentcontrollers.Designer.cs">
       <DependentUpon>201905062228459_fixingstudentcontrollers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905062333342_anothermigrate.cs" />
+    <Compile Include="Migrations\201905062333342_anothermigrate.Designer.cs">
+      <DependentUpon>201905062333342_anothermigrate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -382,6 +386,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905062228459_fixingstudentcontrollers.resx">
       <DependentUpon>201905062228459_fixingstudentcontrollers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905062333342_anothermigrate.resx">
+      <DependentUpon>201905062333342_anothermigrate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

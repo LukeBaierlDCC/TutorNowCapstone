@@ -26,14 +26,15 @@ namespace TutorMeNow.Models
         [Display(Name = "Subject")]
         public int SubjectId { get; set; }
         public virtual Subject SubjectName { get; set; }
+
+        //public virtual Subcategory Subcategory { get; set; }
+
         [Required]
         public DateTime PastSession { get; set; }
         [Required]
         public int AvgRating { get; set; }
         public virtual ICollection<Subject> Subject { get; set; }
-        [ForeignKey("Subcategory")]
-        public int SubcategoryId { get; set; }
-        public Subcategory Subcategory { get; set; }
+
         [ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
@@ -46,5 +47,6 @@ namespace TutorMeNow.Models
         [Required]
         [Display(Name = "Course Subject")]
         public string SubjectName { get; set; }
+
     }
 }

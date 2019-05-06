@@ -35,7 +35,7 @@ namespace TutorMeNow.Controllers
             var currentSubject = db.students.Where(s => s.ApplicationUserId == userLoggedIn).SingleOrDefault();
             var tutorsInZip = db.tutors.Where(t => t.ZipCode == currentStudent.ZipCode).ToList();
 
-            List<Models.Tutor> tutors = new List<Models.Tutor> { };
+            List<Tutor> tutors = new List<Tutor> { };
 
             foreach (var foundTutor in tutorsInZip)
             {
@@ -264,7 +264,7 @@ namespace TutorMeNow.Controllers
                 thisStudent.FirstName = student.FirstName;
                 thisStudent.LastName = student.LastName;
                 thisStudent.SubjectName = student.SubjectName;
-                thisStudent.Subcategory = student.Subcategory;
+                //thisStudent.Subcategory = student.Subcategory;
                 thisStudent.Gender = student.Gender;
                 thisStudent.ZipCode = student.ZipCode;
 
