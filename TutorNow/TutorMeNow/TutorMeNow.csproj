@@ -229,6 +229,10 @@
     <Compile Include="Migrations\201904122133417_bamalama.Designer.cs">
       <DependentUpon>201904122133417_bamalama.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905062228459_fixingstudentcontrollers.cs" />
+    <Compile Include="Migrations\201905062228459_fixingstudentcontrollers.Designer.cs">
+      <DependentUpon>201905062228459_fixingstudentcontrollers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -237,10 +241,12 @@
     <Compile Include="Models\RatingView.cs" />
     <Compile Include="Models\States.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\StudentProfile\StudentProfileModel.cs" />
     <Compile Include="Models\StudentProgress.cs" />
     <Compile Include="Models\Subcategory.cs" />
     <Compile Include="Models\FieldOfStudy.cs" />
     <Compile Include="Models\Tutor.cs" />
+    <Compile Include="Models\TutorProfile\TutorProfileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quiz.aspx.cs">
       <DependentUpon>Quiz.aspx</DependentUpon>
@@ -373,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904122133417_bamalama.resx">
       <DependentUpon>201904122133417_bamalama.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905062228459_fixingstudentcontrollers.resx">
+      <DependentUpon>201905062228459_fixingstudentcontrollers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

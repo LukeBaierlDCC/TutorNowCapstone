@@ -28,19 +28,19 @@ namespace TutorMeNow.Controllers
         public ActionResult StudentHome()
         {
             var userLoggedIn = User.Identity.GetUserId();
-            var currentStudent = db.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
+            var currentStudent = db.students.Where(s => s.ApplicationUserId == userLoggedIn).SingleOrDefault();
             var currentDate = DateTime.Now;
             int tutorAvailability = GetWeekNumber(currentDate);
             //var currentZip = context.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
-            var currentSubject = db.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
-            var tutorsInZip = db.tutors.Where(t => t.Zip == currentStudent.Zip).ToList();
+            var currentSubject = db.students.Where(s => s.ApplicationUserId == userLoggedIn).SingleOrDefault();
+            var tutorsInZip = db.tutors.Where(t => t.ZipCode == currentStudent.ZipCode).ToList();
 
             List<Models.Tutor> tutors = new List<Models.Tutor> { };
 
             foreach (var foundTutor in tutorsInZip)
             {
-                int tutorHoot = GetWeekNumber(foundTutor.TutorAvailability);
-                if (tutorHoot == tutorAvailability)
+                int tutorsInZipCode = GetWeekNumber(foundTutor.TutorAvailability);
+                if (tutorsInZipCode == tutorAvailability)
                 //{
                 //    tutorsInZip.Add(foundTutor);
                 //}
@@ -52,7 +52,7 @@ namespace TutorMeNow.Controllers
             .Cast<Subject>()
             .Select(t => new AccessClass
             {
-                Subject = ((Subject)t),
+                Subject = t,
             });
 
             ViewBag.ListData = typeList;
@@ -70,7 +70,7 @@ namespace TutorMeNow.Controllers
             var CurrentUser = User.Identity.GetUserId();
             var studentFound = db.students.Where(g => g.ApplicationUserId == CurrentUser).SingleOrDefault();
 
-            var filteredTutors = db.tutors.Where(t => t.SubjectName.ToString() == id && t.Zip == studentFound.Zip).ToList();
+            var filteredTutors = db.tutors.Where(t => t.SubjectName.ToString() == id && t.ZipCode == studentFound.ZipCode).ToList();
             return View(filteredTutors);
         }
 
@@ -113,7 +113,7 @@ namespace TutorMeNow.Controllers
             {
                 var states = Extensions.GetDescription(RatingView.Tutor.State);
                 client.BaseAddress = new Uri("Https://maps.googleapis.com/maps/api/geocode/");
-                HttpResponseMessage response = client.GetAsync($"json?address={RatingView.Tutor.Street}+{RatingView.Tutor.Zip},+{RatingView.Tutor.City},+{states}&key=AIzaSyBBA-VL6jTbTGJNW77AsuCuLRVwXB2wKGo").Result;
+                HttpResponseMessage response = client.GetAsync($"json?address={RatingView.Tutor.Street}+{RatingView.Tutor.ZipCode},+{RatingView.Tutor.City},+{states}&key=AIzaSyBBA-VL6jTbTGJNW77AsuCuLRVwXB2wKGo").Result;
                 response.EnsureSuccessStatusCode();
                 var result = response.Content.ReadAsStringAsync().Result;
                 RootObject root = JsonConvert.DeserializeObject<RootObject>(result);
@@ -139,7 +139,7 @@ namespace TutorMeNow.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StudentId,FirstName,LastName,City,State,Zip,Subject,Subcategory")]Student student)
+        public ActionResult Create([Bind(Include = "StudentId,FirstName,LastName,City,State,ZipCode,Subject,Subcategory")]Student student)
         {
             try
             {
@@ -231,7 +231,7 @@ namespace TutorMeNow.Controllers
 
                 thisStudent.FirstName = student.FirstName;
                 thisStudent.LastName = student.LastName;
-                thisStudent.Zip = student.Zip;
+                thisStudent.ZipCode = student.ZipCode;
 
                 db.SaveChanges();
 
@@ -245,21 +245,26 @@ namespace TutorMeNow.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(db.students.Find(id));
         }
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Student student)
         {
-            try
-            {
+            var students = db.students.SingleOrDefault(s => s.StudentId == id);
+            db.students.Remove(db.students.Find(id));
+            db.SaveChanges();
 
-                return RedirectToAction("StudentHome");
-            }
-            catch
-            {
-                return View();
-            }
+            return View("Index", students);
+            //try
+            //{
+
+            //    return RedirectToAction("StudentHome");
+            //}
+            //catch
+            //{
+            //    return View();
+            //}
         }
     }
 }

@@ -38,7 +38,7 @@ namespace TutorMeNow.Controllers
             {
                 var states = Extensions.GetDescription(RatingView.Tutor.State);
                 client.BaseAddress = new Uri("Https://maps.googleapis.com/maps/api/geocode/");
-                HttpResponseMessage response = client.GetAsync($"json?address={RatingView.Tutor.Street}+{RatingView.Tutor.Zip},+{RatingView.Tutor.City},+{states}&key=AIzaSyBBA-VL6jTbTGJNW77AsuCuLRVwXB2wKGo").Result;
+                HttpResponseMessage response = client.GetAsync($"json?address={RatingView.Tutor.Street}+{RatingView.Tutor.ZipCode},+{RatingView.Tutor.City},+{states}&key=AIzaSyBBA-VL6jTbTGJNW77AsuCuLRVwXB2wKGo").Result;
                 response.EnsureSuccessStatusCode();
                 var result = response.Content.ReadAsStringAsync().Result;
                 RootObject root = JsonConvert.DeserializeObject<RootObject>(result);
@@ -125,7 +125,7 @@ namespace TutorMeNow.Controllers
                 editedTutor.FirstName = tutor.FirstName;
                 editedTutor.LastName = tutor.LastName;
                 editedTutor.City = tutor.City;
-                editedTutor.Zip = tutor.Zip;
+                editedTutor.ZipCode = tutor.ZipCode;
                 db.SaveChanges();
 
                 return RedirectToAction("Tutors");
@@ -139,23 +139,28 @@ namespace TutorMeNow.Controllers
         // GET: Tutor/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(db.tutors.Find(id));
         }
 
         // POST: Tutor/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Tutor tutor)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            var tutors = db.tutors.SingleOrDefault(s => s.TutorId == id);
+            db.tutors.Remove(db.tutors.Find(id));
+            db.SaveChanges();
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View("Index", tutors);
+            //try
+            //{
+            //    // TODO: Add delete logic here
+
+            //    return RedirectToAction("Index");
+            //}
+            //catch
+            //{
+            //    return View();
+            //}
         }
     }
 }

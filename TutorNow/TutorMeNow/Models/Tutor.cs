@@ -24,7 +24,7 @@ namespace TutorMeNow.Models
         [Required]
         public States State { get; set; }
         [Required]
-        public int Zip { get; set; }
+        public int ZipCode { get; set; }
         [Required]
         public Gender? Gender { get; set; }
         [Required]

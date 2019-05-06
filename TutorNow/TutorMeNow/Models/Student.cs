@@ -20,7 +20,7 @@ namespace TutorMeNow.Models
         public string LastName { get; set; }
         public string City { get; set; }
         public States State { get; set; }
-        public int Zip { get; set; }
+        public int ZipCode { get; set; }
         public Gender? Gender { get; set; }
         [Required]
         [Display(Name = "Subject")]
