@@ -31,6 +31,9 @@ namespace TutorMeNow.Models
         [Required]
         public int AvgRating { get; set; }
         public virtual ICollection<Subject> Subject { get; set; }
+        [ForeignKey("Subcategory")]
+        public int SubcategoryId { get; set; }
+        public Subcategory Subcategory { get; set; }
         [ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }

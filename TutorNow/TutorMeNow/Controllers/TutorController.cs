@@ -23,7 +23,9 @@ namespace TutorMeNow.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            ApplicationDbContext db = new ApplicationDbContext();
+            List<Tutor> ListOfTutors = db.tutors.ToList();
+            return View(ListOfTutors);
         }
 
         // GET: Tutor/Details/5
@@ -110,29 +112,64 @@ namespace TutorMeNow.Controllers
             }
         }
                 
-        public ActionResult EditTutor(int id)
+        //public ActionResult EditTutor(int id)
+        //{
+        //    var editedTutor = db.tutors.Where(t => t.TutorId == id).SingleOrDefault();
+        //    return View(editedTutor);
+        //}
+
+        //[HttpPost]
+        //public ActionResult EditTutor(int id, Tutor tutor)
+        //{
+        //    try
+        //    {
+        //        var editedTutor = db.tutors.Where(t => t.TutorId == id).SingleOrDefault();
+        //        editedTutor.FirstName = tutor.FirstName;
+        //        editedTutor.LastName = tutor.LastName;
+        //        editedTutor.City = tutor.City;
+        //        editedTutor.ZipCode = tutor.ZipCode;
+        //        db.SaveChanges();
+
+        //        return RedirectToAction("Tutors");
+        //    }
+        //    catch
+        //    {
+        //        return View("Tutors");
+        //    }
+        //}
+
+        [HttpGet]
+        public ActionResult Edit(int id)
         {
-            var editedTutor = db.tutors.Where(t => t.TutorId == id).SingleOrDefault();
-            return View(editedTutor);
+            var tutor = db.tutors.SingleOrDefault(s => s.TutorId == id);
+            if (tutor == null)
+            {
+                return HttpNotFound();
+            }
+            return View();
         }
 
-        [HttpPost]
-        public ActionResult EditTutor(int id, Tutor tutor)
+        public ActionResult Edit(int id, Tutor tutor)
         {
             try
             {
-                var editedTutor = db.tutors.Where(t => t.TutorId == id).SingleOrDefault();
-                editedTutor.FirstName = tutor.FirstName;
-                editedTutor.LastName = tutor.LastName;
-                editedTutor.City = tutor.City;
-                editedTutor.ZipCode = tutor.ZipCode;
+                // TODO: Add update logic here
+                Tutor thisTutor = db.tutors.Find(id);
+
+                thisTutor.FirstName = tutor.FirstName;
+                thisTutor.LastName = tutor.LastName;
+                thisTutor.SubjectName = tutor.SubjectName;
+                thisTutor.Subcategory = tutor.Subcategory;
+                thisTutor.Gender = tutor.Gender;
+                thisTutor.ZipCode = tutor.ZipCode;
+
                 db.SaveChanges();
 
-                return RedirectToAction("Tutors");
+                return RedirectToAction("Index", "Tutors");
             }
             catch
             {
-                return View("Tutors");
+                return View(tutor);
             }
         }
 

@@ -208,40 +208,76 @@ namespace TutorMeNow.Controllers
         //    return View();
         //}
 
-        public ActionResult Edit(int id/*, Student student*/)
-        {
-            try
-            {
-                var editedStudent = db.students.Where(s => s.StudentId == id).SingleOrDefault();
+        //public ActionResult Edit(int id/*, Student student*/)
+        //{
+        //    try
+        //    {
+        //        var editedStudent = db.students.Where(s => s.StudentId == id).SingleOrDefault();
 
-                return View(editedStudent);
-            }
-            catch
+        //        return View(editedStudent);
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
+
+        //[HttpPost]
+        //public ActionResult Edit(int id, Student student)
+        //{
+        //    try
+        //    {
+        //        Student thisStudent = db.students.Find(id);
+
+        //        thisStudent.FirstName = student.FirstName;
+        //        thisStudent.LastName = student.LastName;
+        //        thisStudent.ZipCode = student.ZipCode;
+
+        //        db.SaveChanges();
+
+        //        return RedirectToAction("StudentHome");
+        //    }
+        //    catch
+        //    {
+        //        return View(student);
+        //    }
+        //}
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var student = db.students.SingleOrDefault(s => s.StudentId == id);
+            if (student == null)
             {
-                return View();
+                return HttpNotFound();
             }
+            return View();
         }
 
-        [HttpPost]
         public ActionResult Edit(int id, Student student)
         {
             try
             {
+                // TODO: Add update logic here
                 Student thisStudent = db.students.Find(id);
 
                 thisStudent.FirstName = student.FirstName;
                 thisStudent.LastName = student.LastName;
+                thisStudent.SubjectName = student.SubjectName;
+                thisStudent.Subcategory = student.Subcategory;
+                thisStudent.Gender = student.Gender;
                 thisStudent.ZipCode = student.ZipCode;
 
                 db.SaveChanges();
 
-                return RedirectToAction("StudentHome");
+                return RedirectToAction("Index", "Students");
             }
             catch
             {
                 return View(student);
             }
         }
+
 
         public ActionResult Delete(int id)
         {
