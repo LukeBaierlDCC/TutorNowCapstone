@@ -347,6 +347,7 @@
     <Content Include="Views\FieldOfStudy\Create.cshtml" />
     <Content Include="Views\FieldOfStudy\Details.cshtml" />
     <Content Include="Views\FieldOfStudy\Edit.cshtml" />
+    <Content Include="Views\Home\QuizMe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
