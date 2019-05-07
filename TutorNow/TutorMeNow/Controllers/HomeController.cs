@@ -17,6 +17,11 @@ namespace TutorMeNow.Controllers
             return View();
         }
 
+        public ActionResult QuizMe()
+        {
+            return View();
+        }
+
         public ActionResult Index()
         {
             return View();
