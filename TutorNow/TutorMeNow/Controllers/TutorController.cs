@@ -160,7 +160,7 @@ namespace TutorMeNow.Controllers
                 thisTutor.LastName = tutor.LastName;
                 thisTutor.SubjectName = tutor.SubjectName;
                 thisTutor.Subcategory = tutor.Subcategory;
-                thisTutor.Gender = tutor.Gender;
+                thisTutor.TutorGender = tutor.TutorGender;
                 thisTutor.ZipCode = tutor.ZipCode;
 
                 db.SaveChanges();

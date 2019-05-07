@@ -31,7 +31,7 @@ namespace TutorMeNow.Controllers
             var currentStudent = db.students.Where(s => s.ApplicationUserId == userLoggedIn).SingleOrDefault();
             var currentDate = DateTime.Now;
             int tutorAvailability = GetWeekNumber(currentDate);
-            //var currentZip = context.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
+            //int currentZip = db.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
             var currentSubject = db.students.Where(s => s.ApplicationUserId == userLoggedIn).SingleOrDefault();
             var tutorsInZip = db.tutors.Where(t => t.ZipCode == currentStudent.ZipCode).ToList();
 
@@ -265,7 +265,7 @@ namespace TutorMeNow.Controllers
                 thisStudent.LastName = student.LastName;
                 thisStudent.SubjectName = student.SubjectName;
                 //thisStudent.Subcategory = student.Subcategory;
-                thisStudent.Gender = student.Gender;
+                thisStudent.StudentGender = student.StudentGender;
                 thisStudent.ZipCode = student.ZipCode;
 
                 db.SaveChanges();

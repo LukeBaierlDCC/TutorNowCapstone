@@ -21,7 +21,14 @@ namespace TutorMeNow.Models
         public string City { get; set; }
         public States State { get; set; }
         public int ZipCode { get; set; }
-        public Gender? Gender { get; set; }
+        public Gender StudentGender { get; set; }
+
+        public enum Gender
+        {
+            Male,
+            Female
+        }
+
         [Required]
         [Display(Name = "Subject")]
         public int SubjectId { get; set; }
