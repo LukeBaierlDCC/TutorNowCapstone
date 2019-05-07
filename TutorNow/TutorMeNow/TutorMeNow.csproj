@@ -275,6 +275,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Chalkboard.JPG" />
+    <Content Include="Images\RusticGlobeBooks.JPG" />
+    <Content Include="Images\Tutoring.JPG" />
     <Content Include="Quiz.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
