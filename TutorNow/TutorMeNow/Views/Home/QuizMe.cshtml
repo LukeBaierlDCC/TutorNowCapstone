@@ -1,16 +1,73 @@
 ﻿
-@{
+@*@{
     
     ViewBag.Title = "QuizMe";
     
-}
-    <br />
-    <h2>@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
-<br />
+}*@
+
+    <h2>@ViewBag.Title</h2>
+    @*<h3>@ViewBag.Message</h3>*@
 <br />
 <h2>Quiz Me!</h2>
 
 <br />
-<h3>Math Practice</h3>
-<p>Quiz yourself with some basic <a href="http://localhost:53127/Quiz.aspx" class="btn btn-primary btn-large">Arithmetic</a>.</p>
+@*<h3>Math Practice</h3>
+<p>Quiz yourself with some basic <a href="http://localhost:53127/Quiz.aspx" class="btn btn-primary btn-large">Arithmetic</a>.</p>*@
+
+<html>
+<head>
+    @*Resource used: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_three_columns*@
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 10px;
+            height: 450px;
+        }
+
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Pick Your Quiz Category</h2>
+
+    <div class="row">
+        <div class="column" style="background-color:#aaa;">
+            <h2>Math Practice</h2>
+            <p>Quiz yourself with some basic <a href="http://localhost:53127/Quiz.aspx" class="btn btn-primary btn-large">Arithmetic</a>.</p>
+            <p>Quiz yourself with some Pre-Algebra.</p>
+            <p>Quiz yourself with some Algebra I.</p>
+            <p>Quiz yourself with some Algebra II.</p>
+            <p>Quiz yourself with some Geometry.</p>
+            <p>Quiz yourself with some Statistics.</p>
+            <p>Quiz yourself with some Trigonometry.</p>
+            <p>Quiz yourself with some PreCalculus.</p>
+            <p>Quiz yourself with some Calculus.</p>
+        </div>
+        <div class="column" style="background-color:#bbb;">
+            <h2>Science Practice</h2>
+            <p>Quiz yourself with some Biology.</p>
+            <p>Quiz yourself with some Chemistry.</p>
+            <p>Quiz yourself with some Physics.</p>
+        </div>
+        <div class="column" style="background-color:#ccc;">
+            <h2>English Practice</h2>
+            <p>Quiz yourself with some Grammar.</p>
+            <p>Brush up on your speed reading.</p>
+        </div>
+    </div>
+
+</body>
+</html>
