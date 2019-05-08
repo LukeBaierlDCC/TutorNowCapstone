@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TutorMeNow.Models;
@@ -18,13 +19,24 @@ namespace TutorMeNow.Controllers
         // GET: FieldOfStudy
         public ActionResult Index()
         {
-            return View();
+            ApplicationDbContext db = new ApplicationDbContext();
+            List<FieldOfStudy> ListOfFieldOfStudies = db.FieldOfStudies.ToList();
+            return View(ListOfFieldOfStudies);
         }
 
         // GET: FieldOfStudy/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            FieldOfStudy fieldOfStudy = db.FieldOfStudies.Find(id);
+            if (fieldOfStudy == null)
+            {
+                return HttpNotFound();
+            }
+            return View(fieldOfStudy);
         }
 
         // GET: FieldOfStudy/Create
@@ -60,30 +72,32 @@ namespace TutorMeNow.Controllers
         // GET: FieldOfStudy/Edit/5
         public ActionResult Edit(int id)
         {
-            try
+            var fieldOfStudy = db.FieldOfStudies.SingleOrDefault(s => s.SubjectId == id);
+            if (fieldOfStudy == null)
             {
-                var editedFieldOfStudy = db.tutors.Where(t => t.TutorId == id).SingleOrDefault();
-                return View(editedFieldOfStudy);
+                return HttpNotFound();
             }
-            catch
-            {
-                return View();
-            }
+            return View(fieldOfStudy);
         }
 
         // POST: FieldOfStudy/Edit/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, FieldOfStudy fieldOfStudy)
         {
             try
             {
-                
+                FieldOfStudy thisFieldOfStudy = db.FieldOfStudies.Find(id);
 
-                return RedirectToAction("Index");
+                thisFieldOfStudy.Math = fieldOfStudy.Math;
+                thisFieldOfStudy.English = fieldOfStudy.English;
+                thisFieldOfStudy.Science = fieldOfStudy.Science;
+
+                return RedirectToAction("Index", "FieldOfStudy");
             }
             catch
             {
-                return View();
+                return View(fieldOfStudy);
             }
         }
 

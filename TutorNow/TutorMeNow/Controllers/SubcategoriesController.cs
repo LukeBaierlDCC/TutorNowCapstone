@@ -46,7 +46,7 @@ namespace TutorMeNow.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FieldOfStudy,SubcatId,SubjectId,name")] Subcategory Subcategory)
+        public ActionResult Create([Bind(Include = "FieldOfStudy,SubcatId,SubjectId,Name")] Subcategory Subcategory)
         {
             if (ModelState.IsValid)
             {
