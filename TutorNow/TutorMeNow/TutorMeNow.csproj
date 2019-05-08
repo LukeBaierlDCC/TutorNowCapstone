@@ -237,6 +237,10 @@
     <Compile Include="Migrations\201905062333342_anothermigrate.Designer.cs">
       <DependentUpon>201905062333342_anothermigrate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905082010545_ninthmigration.cs" />
+    <Compile Include="Migrations\201905082010545_ninthmigration.Designer.cs">
+      <DependentUpon>201905082010545_ninthmigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -344,13 +348,16 @@
     <Content Include="Views\Subcategory\Delete.cshtml" />
     <Content Include="Views\Subcategory\Details.cshtml" />
     <Content Include="Views\Subcategory\Edit.cshtml" />
-    <Content Include="Views\Subcategory\Index.cshtml" />
+    <Content Include="Views\Tutor\Index.cshtml" />
     <Content Include="Views\Home\Chat.cshtml" />
     <Content Include="Views\ChatWebAPI\ChatView.cshtml" />
     <Content Include="Views\FieldOfStudy\Create.cshtml" />
     <Content Include="Views\FieldOfStudy\Details.cshtml" />
     <Content Include="Views\FieldOfStudy\Edit.cshtml" />
     <Content Include="Views\Home\QuizMe.cshtml" />
+    <Content Include="Views\Tutor\CreateSubcategory.cshtml" />
+    <Content Include="Views\Tutor\DetailsSubcategory.cshtml" />
+    <Content Include="Views\Tutor\EditSubcategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -394,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905062333342_anothermigrate.resx">
       <DependentUpon>201905062333342_anothermigrate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905082010545_ninthmigration.resx">
+      <DependentUpon>201905082010545_ninthmigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

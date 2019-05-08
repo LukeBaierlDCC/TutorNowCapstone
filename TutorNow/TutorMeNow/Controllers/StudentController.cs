@@ -265,7 +265,7 @@ namespace TutorMeNow.Controllers
                 thisStudent.LastName = student.LastName;
                 thisStudent.SubjectName = student.SubjectName;
                 //thisStudent.Subcategory = student.Subcategory;
-                thisStudent.StudentGender = student.StudentGender;
+                thisStudent.Gender = student.Gender;
                 thisStudent.ZipCode = student.ZipCode;
 
                 db.SaveChanges();

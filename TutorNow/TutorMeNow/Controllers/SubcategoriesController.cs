@@ -21,7 +21,7 @@ namespace TutorMeNow.Controllers
         }
 
         // GET: Subcategory/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult SubcategoryDetails(int? id)
         {
             if (id == null)
             {
@@ -36,9 +36,10 @@ namespace TutorMeNow.Controllers
         }
 
         // GET: Subcategory/Create
-        public ActionResult Create()
+        public ActionResult CreateSubcategory()
         {
-            return View();
+            Subcategory subcategory = new Subcategory();
+            return View(subcategory);
         }
 
         // POST: Subcategory/Create

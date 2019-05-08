@@ -26,9 +26,9 @@ namespace TutorMeNow.Models
         [Required]
         public int ZipCode { get; set; }
         [Required]
-        public Gender TutorGender { get; set; }
+        public Gender Gender { get; set; }
 
-        public enum Gender
+        public enum TutorGender
         {
             Male,
             Female

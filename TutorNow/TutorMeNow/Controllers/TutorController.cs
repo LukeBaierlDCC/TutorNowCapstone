@@ -58,6 +58,20 @@ namespace TutorMeNow.Controllers
             return View(RatingView);
         }
 
+        public ActionResult SubcategoryDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Subcategory Subcategory = db.Subcategory.Find(id);
+            if (Subcategory == null)
+            {
+                return HttpNotFound();
+            }
+            return View(Subcategory);
+        }
+
         public ActionResult CreateTutor()
         {
             Tutor tutor = new Tutor();
@@ -80,38 +94,28 @@ namespace TutorMeNow.Controllers
             }
         }
 
-        public ActionResult CreateNewSubcategory(string id)
+        public ActionResult CreateSubcategory(/*string id*/)
         {
             Subcategory newSubcategory = new Subcategory();
             return View(newSubcategory);
         }
 
         [HttpPost]
-        public ActionResult NewSubcategory(Subcategory Subcategory)
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateSubcategory([Bind(Include = "FieldOfStudy,SubcatId,SubjectId,Name")] Subcategory Subcategory)
         {
-            var CurrentUser = User.Identity.GetUserId();
-
-            var tutorFound = db.tutors.Where(t => t.ApplicationUserId == CurrentUser).SingleOrDefault();
-            try
+            if (ModelState.IsValid)
             {
-                var NewSubcategory = new Subcategory
-                {
-
-                    SubjectId = tutorFound.TutorId,
-                    SubcategoryId = tutorFound.TutorId
-
-                };
-
-                //db.tutors.Add(NewSubcategory);
+                db.Subcategory.Add(Subcategory);
+                //
                 db.SaveChanges();
-                return View("Subcategory");
+                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View("Subcategory");
-            }
+
+            return View(Subcategory);
         }
-                
+
+                       
         //public ActionResult EditTutor(int id)
         //{
         //    var editedTutor = db.tutors.Where(t => t.TutorId == id).SingleOrDefault();
@@ -160,7 +164,7 @@ namespace TutorMeNow.Controllers
                 thisTutor.LastName = tutor.LastName;
                 thisTutor.SubjectName = tutor.SubjectName;
                 thisTutor.Subcategory = tutor.Subcategory;
-                thisTutor.TutorGender = tutor.TutorGender;
+                thisTutor.Gender = tutor.Gender;
                 thisTutor.ZipCode = tutor.ZipCode;
 
                 db.SaveChanges();
