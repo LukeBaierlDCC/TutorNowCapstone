@@ -29,18 +29,27 @@ namespace TutorMeNow.Models
             Female
         }
 
+        public int SubjectId { get; set; }
+        [ForeignKey("SubjectId")]
+        public FieldOfStudy Subject { get; set; }
+
         [Required]
         [Display(Name = "Subject")]
-        public int SubjectId { get; set; }
-        public virtual Subject SubjectName { get; set; }
+        public Subject SubjectName { get; set; }
 
-        //public virtual Subcategory Subcategory { get; set; }
+        public Subcategory Subcategory { get; set; }
+
+        public class AccessClass
+        {
+            public Subject Subject { get; set; }
+        }
 
         [Required]
         public DateTime PastSession { get; set; }
         [Required]
         public int AvgRating { get; set; }
-        public virtual ICollection<Subject> Subject { get; set; }
+        //public virtual ICollection<Subject> Subject { get; set; }
+        public List<Subcategory> Subcategories { get; set; }
 
         [ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }

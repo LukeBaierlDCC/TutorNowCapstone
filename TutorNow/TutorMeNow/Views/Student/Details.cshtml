@@ -59,11 +59,18 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SubjectId)
+            @Html.HiddenFor(model => model.SubjectId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SubjectId)
+            @Html.HiddenFor(model => model.SubjectId)
+        </dd>
+        <dt>
+            @Html.HiddenFor(model => model.ApplicationUserId)
+        </dt>
+
+        <dd>
+            @Html.HiddenFor(model => model.ApplicationUserId)
         </dd>
 
     </dl>

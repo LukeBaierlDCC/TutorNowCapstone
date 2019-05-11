@@ -253,6 +253,10 @@
     <Compile Include="Migrations\201905102020473_migrateforsubcategories.Designer.cs">
       <DependentUpon>201905102020473_migrateforsubcategories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905112029243_studentsubjectsmigrate.cs" />
+    <Compile Include="Migrations\201905112029243_studentsubjectsmigrate.Designer.cs">
+      <DependentUpon>201905112029243_studentsubjectsmigrate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -266,6 +270,7 @@
     <Compile Include="Models\Subcategory.cs" />
     <Compile Include="Models\FieldOfStudy.cs" />
     <Compile Include="Models\Tutor.cs" />
+    <Compile Include="Models\TutorCharge.cs" />
     <Compile Include="Models\TutorProfile\TutorProfileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quiz.aspx.cs">
@@ -373,6 +378,7 @@
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Subcategory\Index.cshtml" />
     <Content Include="Views\FieldOfStudy\Index.cshtml" />
+    <Content Include="Views\Student\Charge.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -434,6 +440,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905102020473_migrateforsubcategories.resx">
       <DependentUpon>201905102020473_migrateforsubcategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905112029243_studentsubjectsmigrate.resx">
+      <DependentUpon>201905112029243_studentsubjectsmigrate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

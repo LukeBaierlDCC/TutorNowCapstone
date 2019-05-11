@@ -32,14 +32,6 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Street, "Street", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Street, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Street, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
         @Html.LabelFor(model => model.City, "City", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
@@ -71,21 +63,29 @@
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.AvgRating, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.AvgRating, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.AvgRating, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.AvgRating, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AvgRating, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AvgRating, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.SubjectName, "SubjectName", htmlAttributes: new { @class = "control-label col-md-2" })
+    @*<div class="form-group">
+        @Html.LabelFor(model => model.Subcategory, "Subcategory", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("Subject", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.SubjectName, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Subcategory, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Subcategory, "", new { @class = "text-danger" })
         </div>
-    </div>
+    </div>*@
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.Subcategory, "Subcategory", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Subcategory", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Subcategory, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
