@@ -45,6 +45,43 @@ namespace TutorMeNow.Models
         [ForeignKey("Subcategory")]
         public int SubcategoryId { get; set; }
         public Subcategory Subcategory { get; set; }
+        public virtual ICollection<Subcategory> GetSubcategory { get; set; }
+        public virtual IEnumerable<Subcategory> CreateSubcategory { get; set; }
+        public List<Subcategory> Subcategories { get; set; }
+
+        public class AccessClass
+        {
+            public Subject Subject { get; set; }
+        }
+
+        public enum EnglishSubcategory
+        {
+            ArgumentativeWriting,
+            CriticalAnalysis,
+            EssayWriting,
+            Grammar,
+            Literature,
+            PublicSpeaking
+
+        }
+        public enum MathSubcategory
+        {
+            Arithmetic,
+            AlgebraOne,
+            AlgebraTwo,
+            Calculus,
+            Geometry,
+            PreAlgebra,
+            PreCalculus,
+            Statistics,
+            Trigonometry
+        }
+        public enum ScienceSubcategory
+        {
+            Biology,
+            Chemistry,
+            Physics
+        }
 
         public int SubcatId { get; set; }
         [ForeignKey("SubcatId")]

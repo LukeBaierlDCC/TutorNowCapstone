@@ -53,7 +53,7 @@ namespace TutorMeNow.Models
         public int SubjectId { get; set; }
         [Required]
         [Display(Name = "Course Subject")]
-        public string SubjectName { get; set; }
+        public string FieldOfStudy { get; set; }
 
     }
 }

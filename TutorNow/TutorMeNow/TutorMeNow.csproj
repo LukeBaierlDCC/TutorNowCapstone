@@ -241,6 +241,18 @@
     <Compile Include="Migrations\201905082010545_ninthmigration.Designer.cs">
       <DependentUpon>201905082010545_ninthmigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905082135298_subcategorytutormigrate.cs" />
+    <Compile Include="Migrations\201905082135298_subcategorytutormigrate.Designer.cs">
+      <DependentUpon>201905082135298_subcategorytutormigrate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905082333535_brandnewmigrate.cs" />
+    <Compile Include="Migrations\201905082333535_brandnewmigrate.Designer.cs">
+      <DependentUpon>201905082333535_brandnewmigrate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905102020473_migrateforsubcategories.cs" />
+    <Compile Include="Migrations\201905102020473_migrateforsubcategories.Designer.cs">
+      <DependentUpon>201905102020473_migrateforsubcategories.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -358,6 +370,15 @@
     <Content Include="Views\Tutor\CreateSubcategory.cshtml" />
     <Content Include="Views\Tutor\DetailsSubcategory.cshtml" />
     <Content Include="Views\Tutor\EditSubcategory.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Subcategory\Index.cshtml" />
+    <Content Include="Views\FieldOfStudy\Index.cshtml" />
+    <None Include="Views\Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Views\Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -404,6 +425,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905082010545_ninthmigration.resx">
       <DependentUpon>201905082010545_ninthmigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905082135298_subcategorytutormigrate.resx">
+      <DependentUpon>201905082135298_subcategorytutormigrate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905082333535_brandnewmigrate.resx">
+      <DependentUpon>201905082333535_brandnewmigrate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905102020473_migrateforsubcategories.resx">
+      <DependentUpon>201905102020473_migrateforsubcategories.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

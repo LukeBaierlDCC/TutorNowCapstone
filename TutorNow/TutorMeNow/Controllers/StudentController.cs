@@ -265,6 +265,7 @@ namespace TutorMeNow.Controllers
                 thisStudent.LastName = student.LastName;
                 thisStudent.SubjectName = student.SubjectName;
                 //thisStudent.Subcategory = student.Subcategory;
+                //thisStudent.FieldOfStudy = student.FieldOfStudy;
                 thisStudent.Gender = student.Gender;
                 thisStudent.ZipCode = student.ZipCode;
 

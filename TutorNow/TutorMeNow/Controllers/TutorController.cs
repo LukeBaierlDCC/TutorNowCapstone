@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -202,6 +203,66 @@ namespace TutorMeNow.Controllers
             //{
             //    return View();
             //}
+        }
+
+        public ActionResult EditSubcategory(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Subcategory Subcategory = db.Subcategory.Find(id);
+            if (Subcategory == null)
+            {
+                return HttpNotFound();
+            }
+            return View(Subcategory);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditSubcategory([Bind(Include = "FieldOfStudy,SubcatId,SubjectId,Name")] Subcategory Subcategory)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(Subcategory).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(Subcategory);
+        }
+
+        public ActionResult DeleteSubcategory(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Subcategory Subcategory = db.Subcategory.Find(id);
+            if (Subcategory == null)
+            {
+                return HttpNotFound();
+            }
+            return View(Subcategory);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteSubcategoryConfirmed(int id)
+        {
+            Subcategory Subcategory = db.Subcategory.Find(id);
+            db.Subcategory.Remove(Subcategory);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

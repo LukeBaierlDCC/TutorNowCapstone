@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TutorMeNow.Models.Tutor>
+﻿@model IEnumerable<TutorMeNow.Models.Student>
 
 @{
     ViewBag.Title = "Index";
@@ -27,12 +27,12 @@
             @Html.DisplayNameFor(model => model.Gender)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SubjectName)
+            @Html.DisplayNameFor(model => model.Subject)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model) { 
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
@@ -50,14 +50,14 @@
             @Html.DisplayFor(modelItem => item.Gender)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SubjectName)
+            @Html.DisplayFor(modelItem => item.Subject)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.TutorId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.TutorId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.TutorId })
+            @Html.ActionLink("Edit", "Edit", new { id = item.StudentId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.StudentId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.StudentId })
         </td>
     </tr>
-}
+    }
 
 </table>
