@@ -38,7 +38,10 @@ namespace TutorMeNow.Models
         public DbSet<Rating> ratings { get; set; }
         public DbSet<RatingView> RatingViews { get; set; }
         public DbSet<StudentProgress> studentProgresses { get; set; }
-        public DbSet<Subcategory> Subcategory { get; set; }
+        public DbSet<Subcategory> Subcategories { get; set; }
+        public DbSet<GrammarFlashcard> GrammarFlashcards { get; set; }
+        public DbSet<ScienceFlashcard> ScienceFlashcards { get; set; }
+        public DbSet<MathWordProblem> MathWordProblems { get; set; }
 
         
     }
