@@ -257,6 +257,10 @@
     <Compile Include="Migrations\201905112029243_studentsubjectsmigrate.Designer.cs">
       <DependentUpon>201905112029243_studentsubjectsmigrate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905131703263_includelearninggoals.cs" />
+    <Compile Include="Migrations\201905131703263_includelearninggoals.Designer.cs">
+      <DependentUpon>201905131703263_includelearninggoals.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -443,6 +447,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905112029243_studentsubjectsmigrate.resx">
       <DependentUpon>201905112029243_studentsubjectsmigrate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905131703263_includelearninggoals.resx">
+      <DependentUpon>201905131703263_includelearninggoals.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

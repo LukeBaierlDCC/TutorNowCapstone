@@ -12,9 +12,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.SubjectName)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
         <th>
@@ -33,19 +30,16 @@
             @Html.DisplayNameFor(model => model.Gender)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Subcategory)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.AvgRating)
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.LearningGoal)
-        </th>*@
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SubjectName)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>
@@ -65,15 +59,15 @@
             @Html.DisplayFor(modelItem => item.Gender)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Subcategory)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.AvgRating)
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.LearningGoal)
-        </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.TutorId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.TutorId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.TutorId })
+            @Html.ActionLink("Edit", "Edit", new { id = item.StudentId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.StudentId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.StudentId })
         </td>
     </tr>
 }
