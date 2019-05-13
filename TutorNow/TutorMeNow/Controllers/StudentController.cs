@@ -62,7 +62,9 @@ namespace TutorMeNow.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            ApplicationDbContext db = new ApplicationDbContext();
+            List<Student> ListOfStudent = db.students.ToList();
+            return View(ListOfStudent);
         }
 
         public ActionResult Filter(string id)
@@ -149,7 +151,7 @@ namespace TutorMeNow.Controllers
                     db.students.Add(student);
                     student.ApplicationUserId = User.Identity.GetUserId();
                     db.SaveChanges();
-                    return RedirectToAction("StudentHome");
+                    return RedirectToAction("Index");
                 }
 
             }

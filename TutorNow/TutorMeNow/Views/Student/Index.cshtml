@@ -1,35 +1,16 @@
 ﻿@model IEnumerable<TutorMeNow.Models.Student>
 
 @{
-    ViewBag.Title = "StudentHome";
+    ViewBag.Title = "Index";
 }
 
-<h2>StudentHome</h2>
-
-@using (Html.BeginForm("Filter", "Student"))
-{
-    <table>
-        <tr>
-            <td>
-                @Html.DropDownList("id", new SelectList(ViewBag.ListData, "Subcategory", "Subcategory"))
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="submit" value="Filter">
-            </td>
-        </tr>
-    </table>
-}
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Subcategory)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -40,26 +21,28 @@
             @Html.DisplayNameFor(model => model.City)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.State)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.ZipCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gender)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.LearningGoal)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubjectId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PastSession)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AvgRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationUserId)
+        </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
+@foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Subcategory)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>
@@ -70,33 +53,29 @@
             @Html.DisplayFor(modelItem => item.City)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.State)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.ZipCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gender)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.LearningGoal)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id = item.StudentId })
+            @Html.DisplayFor(modelItem => item.SubjectId)
         </td>
         <td>
-            @Html.ActionLink("Rate", "GiveRating", new { id = item.StudentId })
+            @Html.DisplayFor(modelItem => item.PastSession)
         </td>
         <td>
-            @Html.ActionLink("Purchase Tutor Fee", "Create", "Cart", new { id = item.StudentId }, null)
+            @Html.DisplayFor(modelItem => item.AvgRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationUserId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.StudentId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.StudentId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.StudentId })
         </td>
     </tr>
-            @*<td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.StudentId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.StudentId }) |
-                @Html.ActionLink("Rate", "GiveRating", new { id = item.StudentId }) |
-            </td>
-        </tr>*@
-    }
+}
 
 </table>
