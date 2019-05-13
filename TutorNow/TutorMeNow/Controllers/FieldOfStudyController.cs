@@ -55,7 +55,7 @@ namespace TutorMeNow.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    db.Subcategory.Add(subcategory);
+                    db.Subcategories.Add(subcategory);
                     
                     db.SaveChanges();
                     return RedirectToAction("Index");

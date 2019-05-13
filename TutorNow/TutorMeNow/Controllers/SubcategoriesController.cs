@@ -17,7 +17,7 @@ namespace TutorMeNow.Controllers
         // GET: Subcategory
         public ActionResult Index()
         {
-            return View(db.Subcategory.ToList());
+            return View(db.Subcategories.ToList());
         }
 
         // GET: Subcategory/Details/5
@@ -27,7 +27,7 @@ namespace TutorMeNow.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Subcategory Subcategory = db.Subcategory.Find(id);
+            Subcategory Subcategory = db.Subcategories.Find(id);
             if (Subcategory == null)
             {
                 return HttpNotFound();
@@ -51,7 +51,7 @@ namespace TutorMeNow.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Subcategory.Add(Subcategory);
+                db.Subcategories.Add(Subcategory);
                 //
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -67,7 +67,7 @@ namespace TutorMeNow.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Subcategory Subcategory = db.Subcategory.Find(id);
+            Subcategory Subcategory = db.Subcategories.Find(id);
             if (Subcategory == null)
             {
                 return HttpNotFound();
@@ -98,7 +98,7 @@ namespace TutorMeNow.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Subcategory Subcategory = db.Subcategory.Find(id);
+            Subcategory Subcategory = db.Subcategories.Find(id);
             if (Subcategory == null)
             {
                 return HttpNotFound();
@@ -111,8 +111,8 @@ namespace TutorMeNow.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Subcategory Subcategory = db.Subcategory.Find(id);
-            db.Subcategory.Remove(Subcategory);
+            Subcategory Subcategory = db.Subcategories.Find(id);
+            db.Subcategories.Remove(Subcategory);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

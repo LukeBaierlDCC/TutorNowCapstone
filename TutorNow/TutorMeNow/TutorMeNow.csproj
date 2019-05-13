@@ -389,7 +389,21 @@
     <Content Include="Views\FieldOfStudy\Index.cshtml" />
     <Content Include="Views\Student\Charge.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
-    <Content Include="Views\GrammarQuiz\Create.cshtml" />
+    <Content Include="Views\GrammarFlashcard\Create.cshtml" />
+    <Content Include="Views\GrammarFlashcard\Delete.cshtml" />
+    <Content Include="Views\GrammarFlashcard\Details.cshtml" />
+    <Content Include="Views\GrammarFlashcard\Edit.cshtml" />
+    <Content Include="Views\GrammarFlashcard\Index.cshtml" />
+    <Content Include="Views\MathWordProblem\Create.cshtml" />
+    <Content Include="Views\MathWordProblem\Delete.cshtml" />
+    <Content Include="Views\MathWordProblem\Details.cshtml" />
+    <Content Include="Views\MathWordProblem\Edit.cshtml" />
+    <Content Include="Views\MathWordProblem\Index.cshtml" />
+    <Content Include="Views\ScienceFlashcard\Create.cshtml" />
+    <Content Include="Views\ScienceFlashcard\Delete.cshtml" />
+    <Content Include="Views\ScienceFlashcard\Details.cshtml" />
+    <Content Include="Views\ScienceFlashcard\Edit.cshtml" />
+    <Content Include="Views\ScienceFlashcard\Index.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -400,8 +414,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Category\" />
-    <Folder Include="Views\MathWordQuiz\" />
-    <Folder Include="Views\ScienceWordQuiz\" />
     <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>

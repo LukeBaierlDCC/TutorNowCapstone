@@ -1,0 +1,34 @@
+﻿@model TutorMeNow.Models.GrammarFlashcard
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>GrammarFlashcard</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GrammarQuestion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GrammarQuestion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GrammarAnswer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GrammarAnswer)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GrammarId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
