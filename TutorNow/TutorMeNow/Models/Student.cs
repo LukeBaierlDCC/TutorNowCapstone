@@ -22,6 +22,7 @@ namespace TutorMeNow.Models
         public States State { get; set; }
         public int ZipCode { get; set; }
         public Gender Gender { get; set; }
+        public string LearningGoal { get; set; }
 
         public enum StudentGender
         {

@@ -139,7 +139,7 @@ namespace TutorMeNow.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StudentId,FirstName,LastName,City,State,ZipCode,Subject,Subcategory")]Student student)
+        public ActionResult Create([Bind(Include = "StudentId,FirstName,LastName,City,State,ZipCode,Subject,Subcategory,LearningGoal")]Student student)
         {
             try
             {
@@ -268,6 +268,7 @@ namespace TutorMeNow.Controllers
                 //thisStudent.FieldOfStudy = student.FieldOfStudy;
                 thisStudent.Gender = student.Gender;
                 thisStudent.ZipCode = student.ZipCode;
+                thisStudent.LearningGoal = student.LearningGoal;
 
                 db.SaveChanges();
 
@@ -279,6 +280,10 @@ namespace TutorMeNow.Controllers
             }
         }
 
+        //public ViewResult LearningGoal(Student student)
+        //{
+            
+        //}
 
         public ActionResult Delete(int id)
         {
