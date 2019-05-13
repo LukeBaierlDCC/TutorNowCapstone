@@ -31,16 +31,16 @@ namespace TutorMeNow.Controllers
             var currentStudent = db.students.Where(s => s.ApplicationUserId == userLoggedIn).SingleOrDefault();
             var currentDate = DateTime.Now;
             int tutorAvailability = GetWeekNumber(currentDate);
-            //int currentZip = db.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
+            //int currentZipCode = db.students.Where(s => s.ApplicationUserId == userLoggedIn).Single();
             var currentSubject = db.students.Where(s => s.ApplicationUserId == userLoggedIn).SingleOrDefault();
-            var tutorsInZip = db.tutors.Where(t => t.ZipCode == currentStudent.ZipCode).ToList();
+            var tutorsInZipCode = db.tutors.Where(t => t.ZipCode == currentStudent.ZipCode).ToList();
 
             List<Tutor> tutors = new List<Tutor> { };
 
-            foreach (var foundTutor in tutorsInZip)
+            foreach (var foundTutor in tutorsInZipCode)
             {
-                int tutorsInZipCode = GetWeekNumber(foundTutor.TutorAvailability);
-                if (tutorsInZipCode == tutorAvailability)
+                int tutorsInZip = GetWeekNumber(foundTutor.TutorAvailability);
+                if (tutorsInZip == tutorAvailability)
                 //{
                 //    tutorsInZip.Add(foundTutor);
                 //}
@@ -57,8 +57,9 @@ namespace TutorMeNow.Controllers
 
             ViewBag.ListData = typeList;
 
-            return View(tutorsInZip);
+            return View(tutorsInZipCode);
         }
+
         public ActionResult Index()
         {
             return View();

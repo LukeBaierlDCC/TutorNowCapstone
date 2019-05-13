@@ -65,10 +65,19 @@
             @Html.DisplayFor(modelItem => item.AvgRating)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.StudentId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.StudentId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.StudentId })
+            @Html.ActionLink("Details", "TutorDetails", new { id = item.TutorId })
         </td>
+        <td>
+            @Html.ActionLink("Rate", "GiveRating", new { id = item.TutorId })
+        </td>
+        <td>
+            @Html.ActionLink("Tutor Fee", "Create", "Cart", new { id = item.TutorId }, null)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.TutorId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.TutorId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.TutorId })
+        </td>*@
     </tr>
 }
 
