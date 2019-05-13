@@ -1,16 +1,35 @@
 ﻿@model IEnumerable<TutorMeNow.Models.Student>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "StudentHome";
 }
 
-<h2>Index</h2>
+<h2>StudentHome</h2>
+
+@using (Html.BeginForm("Filter", "Student"))
+{
+    <table>
+        <tr>
+            <td>
+                @Html.DropDownList("id", new SelectList(ViewBag.ListData, "Subcategory", "Subcategory"))
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Filter">
+            </td>
+        </tr>
+    </table>
+}
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Subcategory)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -30,16 +49,17 @@
             @Html.DisplayNameFor(model => model.Gender)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Subcategory)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.LearningGoal)
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model) { 
+    @foreach (var item in Model)
+    {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subcategory)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>
@@ -59,17 +79,24 @@
             @Html.DisplayFor(modelItem => item.Gender)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Subcategory)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.LearningGoal)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.StudentId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.StudentId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.StudentId })
+            @Html.ActionLink("Details", "Details", new { id = item.StudentId })
+        </td>
+        <td>
+            @Html.ActionLink("Rate", "GiveRating", new { id = item.StudentId })
+        </td>
+        <td>
+            @Html.ActionLink("Purchase Tutor Fee", "Create", "Cart", new { id = item.StudentId }, null)
         </td>
     </tr>
+            @*<td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.StudentId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.StudentId }) |
+                @Html.ActionLink("Rate", "GiveRating", new { id = item.StudentId }) |
+            </td>
+        </tr>*@
     }
 
 </table>

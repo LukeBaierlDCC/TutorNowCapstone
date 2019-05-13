@@ -195,8 +195,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ChatWebAPIController.cs" />
     <Compile Include="Controllers\FieldOfStudyController.cs" />
+    <Compile Include="Controllers\GrammarQuizController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MathWordQuizController.cs" />
+    <Compile Include="Controllers\ScienceWordQuizController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\SubcategoriesController.cs" />
     <Compile Include="Controllers\TutorController.cs" />
@@ -379,10 +382,10 @@
     <Content Include="Views\Tutor\CreateSubcategory.cshtml" />
     <Content Include="Views\Tutor\DetailsSubcategory.cshtml" />
     <Content Include="Views\Tutor\EditSubcategory.cshtml" />
-    <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Subcategory\Index.cshtml" />
     <Content Include="Views\FieldOfStudy\Index.cshtml" />
     <Content Include="Views\Student\Charge.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -393,6 +396,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Category\" />
+    <Folder Include="Views\GrammarQuiz\" />
+    <Folder Include="Views\MathWordQuiz\" />
+    <Folder Include="Views\ScienceWordQuiz\" />
     <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
