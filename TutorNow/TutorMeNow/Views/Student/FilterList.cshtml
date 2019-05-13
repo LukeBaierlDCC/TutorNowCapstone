@@ -35,6 +35,9 @@
         <th>
             @Html.DisplayNameFor(model => model.AvgRating)
         </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.LearningGoal)
+        </th>*@
         <th></th>
     </tr>
 
@@ -64,10 +67,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.AvgRating)
         </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.LearningGoal)
+        </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TutorId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TutorId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TutorId })
+            @Html.ActionLink("Edit", "Edit", new { id = item.TutorId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.TutorId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.TutorId })
         </td>
     </tr>
 }

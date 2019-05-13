@@ -48,6 +48,9 @@
         @*<th>
             @Html.DisplayNameFor(model => model.SubjectId)
         </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.LearningGoal)
+        </th>
         <th></th>
     </tr>
 
@@ -76,13 +79,16 @@
             @Html.DisplayFor(modelItem => item.SubjectId)
         </td>*@
         <td>
+            @Html.DisplayFor(modelItem => item.LearningGoal)
+        </td>
+        <td>
             @Html.ActionLink("Details", "Details", new { id = item.StudentId })
         </td>
         <td>
             @Html.ActionLink("Rate", "GiveRating", new { id = item.StudentId })
         </td>
         <td>
-            @Html.ActionLink("Purchase Tutor Fee", "Create", "Cart", new { id = item.StudentId },null)
+            @Html.ActionLink("Purchase Tutor Fee", "Create", "Cart", new { id = item.StudentId }, null)
         </td>
     </tr>
             @*<td>
