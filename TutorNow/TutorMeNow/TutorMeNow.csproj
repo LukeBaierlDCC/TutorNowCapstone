@@ -264,6 +264,10 @@
     <Compile Include="Migrations\201905131703263_includelearninggoals.Designer.cs">
       <DependentUpon>201905131703263_includelearninggoals.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905132030113_includingflashcards.cs" />
+    <Compile Include="Migrations\201905132030113_includingflashcards.Designer.cs">
+      <DependentUpon>201905132030113_includingflashcards.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\GrammarFlashcard.cs" />
@@ -471,6 +475,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905131703263_includelearninggoals.resx">
       <DependentUpon>201905131703263_includelearninggoals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905132030113_includingflashcards.resx">
+      <DependentUpon>201905132030113_includingflashcards.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
