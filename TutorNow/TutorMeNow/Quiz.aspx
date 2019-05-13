@@ -10,6 +10,11 @@
     <form id="form1" runat="server">
         <div>
             <table align="center">
+                <header>
+                    <center>
+                    <h3 style="width: 144px; height: 39px">Arithmetic Quiz</h3>
+                        </center>
+                </header>
                 <tr>
                     <td>
                         <asp:Label ID="Label1" runat="server" Text="What is 5 + 1(6 - 3)?"></asp:Label><br />
@@ -31,7 +36,7 @@
                 </tr>
             </table>
 
-            <asp:RadioButton ID="RadioButtonA" runat="server" OnCheckedChanged="RadioButtonA_CheckedChanged" />
+            <%--<asp:RadioButton ID="RadioButtonA" runat="server" OnCheckedChanged="RadioButtonA_CheckedChanged" />--%>
 
 
         </div>
