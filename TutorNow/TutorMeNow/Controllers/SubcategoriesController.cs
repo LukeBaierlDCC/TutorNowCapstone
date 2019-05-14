@@ -17,6 +17,8 @@ namespace TutorMeNow.Controllers
         // GET: Subcategory
         public ActionResult Index()
         {
+            ApplicationDbContext db = new ApplicationDbContext();
+            List<Subcategory> ListOfSubcategory = db.Subcategories.ToList();
             return View(db.Subcategories.ToList());
         }
 
@@ -49,30 +51,29 @@ namespace TutorMeNow.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "FieldOfStudy,SubcatId,SubjectId,Subcategory")] Subcategory Subcategory)
         {
-            if (ModelState.IsValid)
+            try
             {
+                // TODO: Add insert logic here
+                ApplicationDbContext db = new ApplicationDbContext();
                 db.Subcategories.Add(Subcategory);
-                //
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            return View(Subcategory);
+            catch
+            {
+                return View();
+            }
         }
 
         // GET: Subcategory/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Subcategory Subcategory = db.Subcategories.Find(id);
-            if (Subcategory == null)
+            var subcategories = db.Subcategories.SingleOrDefault(s => s.SubcategoryId == id);
+            if (subcategories == null)
             {
                 return HttpNotFound();
             }
-            return View(Subcategory);
+            return View(subcategories);
         }
 
         // POST: Subcategory/Edit/5

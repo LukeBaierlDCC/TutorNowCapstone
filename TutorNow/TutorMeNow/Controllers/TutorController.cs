@@ -98,10 +98,10 @@ namespace TutorMeNow.Controllers
         {
             try
             {
+                ApplicationDbContext db = new ApplicationDbContext();
                 db.tutors.Add(tutor);
-                tutor.ApplicationUserId = User.Identity.GetUserId();
                 db.SaveChanges();
-                return RedirectToAction("Tutors");
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -160,12 +160,12 @@ namespace TutorMeNow.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var tutor = db.tutors.SingleOrDefault(s => s.TutorId == id);
+            var tutor = db.tutors.SingleOrDefault(t => t.TutorId == id);
             if (tutor == null)
             {
                 return HttpNotFound();
             }
-            return View();
+            return View(tutor);
         }
 
         public ActionResult Edit(int id, Tutor tutor)

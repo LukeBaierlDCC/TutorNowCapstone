@@ -24,7 +24,7 @@ namespace TutorMeNow.Controllers
         }
 
         // GET: GrammarFlashcard/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -51,7 +51,7 @@ namespace TutorMeNow.Controllers
             try
             {
                 // TODO: Add insert logic here
-                Models.ApplicationDbContext db = new Models.ApplicationDbContext();
+                ApplicationDbContext db = new ApplicationDbContext();
                 db.GrammarFlashcards.Add(grammarFlashcard);
                 db.SaveChanges();
                 return RedirectToAction("Index");

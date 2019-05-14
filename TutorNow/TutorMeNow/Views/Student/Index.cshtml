@@ -27,16 +27,13 @@
             @Html.DisplayNameFor(model => model.LearningGoal)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SubjectId)
+            @Html.DisplayNameFor(model => model.Subcategory)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PastSession)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.AvgRating)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ApplicationUserId)
         </th>
         <th></th>
     </tr>
@@ -59,16 +56,13 @@
             @Html.DisplayFor(modelItem => item.LearningGoal)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SubjectId)
+            @Html.DisplayFor(modelItem => item.Subcategory)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PastSession)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.AvgRating)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApplicationUserId)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.StudentId }) |
