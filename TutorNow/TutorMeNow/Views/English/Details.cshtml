@@ -1,0 +1,26 @@
+﻿@model TutorMeNow.Models.English
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>English</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EnglishSubcategory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnglishSubcategory)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EnglishId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -42,31 +42,27 @@ namespace TutorMeNow.Controllers
         // GET: FieldOfStudy/Create
         public ActionResult Create()
         {
-            Subcategory subcategory = new Subcategory();
-            return View(subcategory);
+            FieldOfStudy fieldOfStudy = new FieldOfStudy();
+            return View(fieldOfStudy);
         }
 
         // POST: FieldOfStudy/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Math,English,Science")] Subcategory subcategory)
+        public ActionResult Create([Bind(Include = "Math,English,Science")] FieldOfStudy fieldOfStudy)
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    db.Subcategories.Add(subcategory);
-                    
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-
+                // TODO: Add insert logic here
+                ApplicationDbContext db = new ApplicationDbContext();
+                db.FieldOfStudies.Add(fieldOfStudy);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
             catch
             {
-                
+                return View(fieldOfStudy);
             }
-            return View(subcategory);
         }
 
         // GET: FieldOfStudy/Edit/5
@@ -104,23 +100,18 @@ namespace TutorMeNow.Controllers
         // GET: FieldOfStudy/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(db.FieldOfStudies.Find(id));
         }
 
         // POST: FieldOfStudy/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, FieldOfStudy fieldOfStudy)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            var fieldOfStudies = db.FieldOfStudies.SingleOrDefault(s => s.SubjectId == id);
+            db.FieldOfStudies.Remove(db.FieldOfStudies.Find(id));
+            db.SaveChanges();
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View("Index", fieldOfStudy);
         }
     }
 }

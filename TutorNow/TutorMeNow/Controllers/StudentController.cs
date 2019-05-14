@@ -136,8 +136,8 @@ namespace TutorMeNow.Controllers
         }
         public ActionResult Create()
         {
-            Student student = new Student();
-            return View(student);
+            //Student student = new Student();
+            return View(/*student*/);
         }
 
         [HttpPost]

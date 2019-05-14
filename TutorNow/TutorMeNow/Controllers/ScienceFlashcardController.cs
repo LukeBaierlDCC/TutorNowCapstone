@@ -51,7 +51,7 @@ namespace TutorMeNow.Controllers
             try
             {
                 // TODO: Add insert logic here
-                Models.ApplicationDbContext db = new Models.ApplicationDbContext();
+                ApplicationDbContext db = new ApplicationDbContext();
                 db.ScienceFlashcards.Add(scienceFlashcard);
                 db.SaveChanges();
                 return RedirectToAction("Index");

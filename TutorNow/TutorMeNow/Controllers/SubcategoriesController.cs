@@ -12,7 +12,11 @@ namespace TutorMeNow.Controllers
 {
     public class SubcategoryController : Controller
     {
-        ApplicationDbContext db = new ApplicationDbContext();
+        ApplicationDbContext db;
+        public SubcategoryController()
+        {
+            db = new ApplicationDbContext();
+        }
 
         // GET: Subcategory
         public ActionResult Index()
@@ -40,8 +44,8 @@ namespace TutorMeNow.Controllers
         // GET: Subcategory/Create
         public ActionResult Create()
         {
-            Subcategory subcategory = new Subcategory();
-            return View(subcategory);
+            //Subcategory subcategory = new Subcategory();
+            return View(/*subcategory*/);
         }
 
         // POST: Subcategory/Create
@@ -75,19 +79,31 @@ namespace TutorMeNow.Controllers
         }
 
         // POST: Subcategory/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "FieldOfStudy,Subcategory")] Subcategory Subcategory)
+        public ActionResult Edit(int id, Subcategory Subcategory)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(Subcategory).State = EntityState.Modified;
+                // TODO: Add update logic here
+                Subcategory thisSubcategory = db.Subcategories.Find(id);
+
+                thisSubcategory.FieldOfStudy = Subcategory.FieldOfStudy;
+                thisSubcategory.GetSubcategory = Subcategory.GetSubcategory;
+
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                return RedirectToAction("Index", "Subcategories");
             }
-            return View(Subcategory);
+            catch
+            {
+                return View(Subcategory);
+            }
+        }
+
+        public ActionResult Delete(int id)
+        {
+            return View(db.Subcategories.Find(id));
         }
 
         // GET: Subcategory/Delete/5

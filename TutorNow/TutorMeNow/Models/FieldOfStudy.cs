@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace TutorMeNow.Models
 {
@@ -6,6 +7,7 @@ namespace TutorMeNow.Models
     {
         [Key]
         public int SubjectId { get; set; }
+        //public virtual ICollection<FieldOfStudy> FieldOfStudies { get; set; }
         public string Subcategory { get; set; }
         public string Subject { get; set; }
         public string English { get; set; }

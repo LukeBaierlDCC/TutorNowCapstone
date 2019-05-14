@@ -194,11 +194,14 @@
     <Compile Include="ChatHub.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ChatWebAPIController.cs" />
+    <Compile Include="Controllers\EnglishController.cs" />
     <Compile Include="Controllers\FieldOfStudyController.cs" />
     <Compile Include="Controllers\GrammarFlashcardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MathController.cs" />
     <Compile Include="Controllers\MathWordProblemController.cs" />
+    <Compile Include="Controllers\ScienceController.cs" />
     <Compile Include="Controllers\ScienceFlashcardController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\SubcategoriesController.cs" />
@@ -278,12 +281,15 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\English.cs" />
     <Compile Include="Models\GrammarFlashcard.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Math.cs" />
     <Compile Include="Models\MathWordProblem.cs" />
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\RatingView.cs" />
+    <Compile Include="Models\Science.cs" />
     <Compile Include="Models\ScienceFlashcard.cs" />
     <Compile Include="Models\States.cs" />
     <Compile Include="Models\Student.cs" />
@@ -416,6 +422,21 @@
     <Content Include="Views\ScienceFlashcard\Index.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Student\Create.cshtml" />
+    <Content Include="Views\English\Create.cshtml" />
+    <Content Include="Views\English\Index.cshtml" />
+    <Content Include="Views\English\Details.cshtml" />
+    <Content Include="Views\English\Delete.cshtml" />
+    <Content Include="Views\English\Edit.cshtml" />
+    <Content Include="Views\Science\Index.cshtml" />
+    <Content Include="Views\Science\Create.cshtml" />
+    <Content Include="Views\Science\Delete.cshtml" />
+    <Content Include="Views\Science\Details.cshtml" />
+    <Content Include="Views\Science\Edit.cshtml" />
+    <Content Include="Views\Math\Index.cshtml" />
+    <Content Include="Views\Math\Create.cshtml" />
+    <Content Include="Views\Math\Delete.cshtml" />
+    <Content Include="Views\Math\Details.cshtml" />
+    <Content Include="Views\Math\Edit.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

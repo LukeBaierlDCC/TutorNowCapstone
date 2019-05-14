@@ -11,6 +11,7 @@ namespace TutorMeNow.Models
     {
         [Key]
         public int SubjectId { get; set; }
+        //[ForeignKey("SubjectId")]
         public int SubcategoryId { get; set; }
         public string FieldOfStudy { get; set; }
         public string Name { get; set; }

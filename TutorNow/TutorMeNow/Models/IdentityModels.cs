@@ -42,6 +42,9 @@ namespace TutorMeNow.Models
         public DbSet<GrammarFlashcard> GrammarFlashcards { get; set; }
         public DbSet<ScienceFlashcard> ScienceFlashcards { get; set; }
         public DbSet<MathWordProblem> MathWordProblems { get; set; }
+        public DbSet<English> Englishes { get; set; }
+        public DbSet<Math> Maths { get; set; }
+        public DbSet<Science> Sciences { get; set; }
 
         
     }

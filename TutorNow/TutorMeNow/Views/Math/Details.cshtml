@@ -1,0 +1,26 @@
+﻿@model TutorMeNow.Models.Math
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Math</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MathSubcategory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MathSubcategory)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MathId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
