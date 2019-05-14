@@ -29,8 +29,22 @@ namespace TutorMeNow.Controllers
             return View(ListOfTutors);
         }
 
-        // GET: Tutor/Details/5
         public ActionResult Details(int id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Tutor tutor = db.tutors.Find(id);
+            if (tutor == null)
+            {
+                return HttpNotFound();
+            }
+            return View(tutor);
+        }
+
+        // GET: Tutor/Details/5
+        public ActionResult RatingDetails(int id)
         {
             RatingView RatingView = new RatingView();
 
@@ -73,14 +87,14 @@ namespace TutorMeNow.Controllers
             return View(Subcategory);
         }
 
-        public ActionResult CreateTutor()
+        public ActionResult Create()
         {
             Tutor tutor = new Tutor();
-            return View("CreateTutor", tutor);
+            return View("Tutor", tutor);
         }
 
         [HttpPost]
-        public ActionResult CreateTutor(Tutor tutor)
+        public ActionResult Create(Tutor tutor)
         {
             try
             {
