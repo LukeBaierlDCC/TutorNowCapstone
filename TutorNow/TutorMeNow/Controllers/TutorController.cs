@@ -90,14 +90,15 @@ namespace TutorMeNow.Controllers
         public ActionResult Create()
         {
             Tutor tutor = new Tutor();
-            return View("Tutor", tutor);
+            return View(tutor);
         }
 
         [HttpPost]
-        public ActionResult Create(Tutor tutor)
+        public ActionResult Create(/*[Bind(Include = "StudentId,FirstName,LastName,City,State,ZipCode,Gender,Subcategory,LearningGoal")]*/Tutor tutor)
         {
             try
             {
+                // TODO: Add insert logic here
                 ApplicationDbContext db = new ApplicationDbContext();
                 db.tutors.Add(tutor);
                 db.SaveChanges();
@@ -117,7 +118,7 @@ namespace TutorMeNow.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateSubcategory([Bind(Include = "FieldOfStudy,SubcatId,SubjectId,Name")] Subcategory Subcategory)
+        public ActionResult CreateSubcategory([Bind(Include = "FieldOfStudy,Subcategory")] Subcategory Subcategory)
         {
             if (ModelState.IsValid)
             {
@@ -130,7 +131,19 @@ namespace TutorMeNow.Controllers
             return View(Subcategory);
         }
 
-                       
+        public ActionResult GiveRating(int id)
+        {
+            try
+            {
+                var ratedStudent = db.students.Where(t => t.StudentId == id).SingleOrDefault();
+                return View(ratedStudent);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         //public ActionResult EditTutor(int id)
         //{
         //    var editedTutor = db.tutors.Where(t => t.TutorId == id).SingleOrDefault();
@@ -235,7 +248,7 @@ namespace TutorMeNow.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditSubcategory([Bind(Include = "FieldOfStudy,SubcatId,SubjectId,Name")] Subcategory Subcategory)
+        public ActionResult EditSubcategory([Bind(Include = "FieldOfStudy,Subcategory")] Subcategory Subcategory)
         {
             if (ModelState.IsValid)
             {

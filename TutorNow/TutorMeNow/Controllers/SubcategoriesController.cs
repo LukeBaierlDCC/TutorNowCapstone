@@ -23,7 +23,7 @@ namespace TutorMeNow.Controllers
         }
 
         // GET: Subcategory/Details/5
-        public ActionResult SubcategoryDetails(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -38,18 +38,16 @@ namespace TutorMeNow.Controllers
         }
 
         // GET: Subcategory/Create
-        public ActionResult CreateSubcategory()
+        public ActionResult Create()
         {
             Subcategory subcategory = new Subcategory();
             return View(subcategory);
         }
 
         // POST: Subcategory/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FieldOfStudy,SubcatId,SubjectId,Subcategory")] Subcategory Subcategory)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Create(/*[Bind(Include = "FieldOfStudy,Subcategory")] */Subcategory Subcategory)
         {
             try
             {
@@ -81,7 +79,7 @@ namespace TutorMeNow.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "FieldOfStudy,SubcatId,SubjectId,Subcategory")] Subcategory Subcategory)
+        public ActionResult Edit([Bind(Include = "FieldOfStudy,Subcategory")] Subcategory Subcategory)
         {
             if (ModelState.IsValid)
             {
