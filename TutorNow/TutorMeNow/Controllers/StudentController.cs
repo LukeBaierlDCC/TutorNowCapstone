@@ -134,32 +134,27 @@ namespace TutorMeNow.Controllers
 
             return View(RatingView);
         }
-        public ActionResult CreateStudent()
+        public ActionResult Create()
         {
             Student student = new Student();
             return View(student);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StudentId,FirstName,LastName,City,State,ZipCode,FieldOfStudy,Subcategory,LearningGoal")]Student student)
+        public ActionResult Create(/*[Bind(Include = "StudentId,FirstName,LastName,City,State,ZipCode,Gender,Subcategory,LearningGoal")]*/Student student)
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    db.students.Add(student);
-                    student.ApplicationUserId = User.Identity.GetUserId();
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-
+                // TODO: Add insert logic here
+                ApplicationDbContext db = new ApplicationDbContext();
+                db.students.Add(student);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
             catch
             {
                 return View();
             }
-            return View(student);
         }
 
         public ActionResult GiveRating(int id)
@@ -266,10 +261,11 @@ namespace TutorMeNow.Controllers
 
                 thisStudent.FirstName = student.FirstName;
                 thisStudent.LastName = student.LastName;
-                thisStudent.Subcategory = student.Subcategory;
-                //thisStudent.FieldOfStudy = student.FieldOfStudy;
-                thisStudent.Gender = student.Gender;
+                thisStudent.City = student.City;
+                thisStudent.State = student.State;
                 thisStudent.ZipCode = student.ZipCode;
+                thisStudent.Gender = student.Gender;
+                thisStudent.Subcategory = student.Subcategory;
                 thisStudent.LearningGoal = student.LearningGoal;
 
                 db.SaveChanges();

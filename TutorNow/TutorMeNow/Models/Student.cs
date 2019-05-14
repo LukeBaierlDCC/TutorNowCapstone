@@ -24,6 +24,8 @@ namespace TutorMeNow.Models
         public Gender Gender { get; set; }
         public string LearningGoal { get; set; }
 
+        public FieldOfStudy FieldOfStudy { get; set; }
+
         public enum StudentGender
         {
             Male,
