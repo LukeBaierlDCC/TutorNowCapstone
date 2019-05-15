@@ -83,6 +83,8 @@ namespace TutorMeNow.Controllers
                 Models.Math thisMath = db.Maths.Find(id);
 
                 thisMath.MathSubcategory = math.MathSubcategory;
+                thisMath.MathTutor = math.MathTutor;
+                thisMath.MathStudent = math.MathStudent;
 
                 db.SaveChanges();
 

@@ -83,6 +83,8 @@ namespace TutorMeNow.Controllers
                 English thisEnglish = db.Englishes.Find(id);
 
                 thisEnglish.EnglishSubcategory = english.EnglishSubcategory;
+                thisEnglish.EnglishTutor = english.EnglishTutor;
+                thisEnglish.EnglishStudent = english.EnglishStudent;
 
                 db.SaveChanges();
 

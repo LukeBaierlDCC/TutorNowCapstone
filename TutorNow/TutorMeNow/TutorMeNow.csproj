@@ -279,6 +279,10 @@
     <Compile Include="Migrations\201905141749176_fieldofstudystudents2.Designer.cs">
       <DependentUpon>201905141749176_fieldofstudystudents2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905152221062_mathscienceenglishadded.cs" />
+    <Compile Include="Migrations\201905152221062_mathscienceenglishadded.Designer.cs">
+      <DependentUpon>201905152221062_mathscienceenglishadded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\English.cs" />
@@ -513,6 +517,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905141749176_fieldofstudystudents2.resx">
       <DependentUpon>201905141749176_fieldofstudystudents2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905152221062_mathscienceenglishadded.resx">
+      <DependentUpon>201905152221062_mathscienceenglishadded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

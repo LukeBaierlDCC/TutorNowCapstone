@@ -11,5 +11,7 @@ namespace TutorMeNow.Models
         [Key]
         public int ScienceId { get; set; }
         public string ScienceSubcategory { get; set; }
+        public string ScienceTutor { get; set; }
+        public string ScienceStudent { get; set; }
     }
 }

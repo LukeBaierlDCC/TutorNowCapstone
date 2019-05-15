@@ -83,6 +83,8 @@ namespace TutorMeNow.Controllers
                 Science thisScience = db.Sciences.Find(id);
 
                 thisScience.ScienceSubcategory = science.ScienceSubcategory;
+                thisScience.ScienceTutor = science.ScienceTutor;
+                thisScience.ScienceStudent = science.ScienceStudent;
 
                 db.SaveChanges();
 

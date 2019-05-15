@@ -11,5 +11,7 @@ namespace TutorMeNow.Models
         [Key]
         public int MathId { get; set; }
         public string MathSubcategory { get; set; }
+        public string MathTutor { get; set; }
+        public string MathStudent { get; set; }
     }
 }

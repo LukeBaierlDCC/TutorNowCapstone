@@ -14,6 +14,12 @@
         <th>
             @Html.DisplayNameFor(model => model.ScienceSubcategory)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ScienceTutor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ScienceStudent)
+        </th>
         <th></th>
     </tr>
 
@@ -23,9 +29,15 @@
             @Html.DisplayFor(modelItem => item.ScienceSubcategory)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ScienceId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ScienceId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ScienceId })
+            @Html.DisplayFor(modelItem => item.ScienceTutor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ScienceStudent)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ScienceId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ScienceId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ScienceId })
         </td>
     </tr>
 }

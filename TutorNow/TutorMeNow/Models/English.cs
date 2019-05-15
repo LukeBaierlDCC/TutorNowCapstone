@@ -11,5 +11,7 @@ namespace TutorMeNow.Models
         [Key]
         public int EnglishId { get; set; }
         public string EnglishSubcategory { get; set; }
+        public string EnglishTutor { get; set; }
+        public string EnglishStudent { get; set; }
     }
 }
